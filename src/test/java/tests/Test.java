@@ -27,10 +27,8 @@ public class Test {
     }
 
     @org.junit.Test
-    public void Test(){
+    public void Test() {
         obj_HomePage = new HomePage(driver);
-        obj_HomePage.removeCookies();
-        obj_LoginPage = obj_HomePage.goToLoginPage();
-        obj_LoginPage.insertEmail("cristian.negrea@endava.com");
+        obj_HomePage.validationHomePage();
     }
 }
