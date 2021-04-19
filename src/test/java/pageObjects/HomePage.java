@@ -48,6 +48,7 @@ public class HomePage {
 
     public HomePage validationHomePage(){
        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
+       // assertEquals(driver.getTitle(), "eMAG.ro - Libertate în fiecare zi");
         return this;
     }
 }
