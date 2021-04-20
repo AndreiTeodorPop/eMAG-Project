@@ -20,15 +20,14 @@ public class BasketPage {
 
     WebDriver driver;
 
-
-    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
-    private WebElement deleteFirstProduct;
-    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
-    private WebElement deleteSecondProduct;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
     private WebElement productOne;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
     private WebElement productTwo;
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
+    private WebElement deleteFirstProduct;
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
+    private WebElement deleteSecondProduct;
     @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
     private WebElement message;
 
