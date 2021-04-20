@@ -28,6 +28,13 @@ public class ImplementationSearch {
         setUp.searchTastaturaPage.selectEmagGenius();
     }
 
+<<<<<<< Updated upstream
+=======
+    @Then("User adds first product to cart")
+    public void userAddsFirstProductToCart() {
+        setUp.searchTastaturaPage.addFirstElement();
+    }
+>>>>>>> Stashed changes
 
     @Then("User adds products to cart")
     public void userAddsProductsToCart() {
