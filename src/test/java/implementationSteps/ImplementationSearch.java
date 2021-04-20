@@ -20,25 +20,24 @@ public class ImplementationSearch {
 
     @When("User searches for tastatura in search bar")
     public void userSearchesForTastaturaInSearchBar() {
-        setUp.homePage.searchProduct("Tastatura");
+        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Tastatura");
     }
 
+    @And("User selects eMAG genius products")
+    public void userSelectsEMAGGeniusProducts() {
+       setUp.searchTastaturaPage.selectEmagGenius();
+    }
 
-//    @And("User selects eMAG genius products")
-//    public void userSelectsEMAGGeniusProducts() {
-//        throw new io.cucumber.java.PendingException();
-//    }
-//
-//    @Then("User adds first product to cart")
-//    public void userAddsFirstProductToCart() {
-//        throw new io.cucumber.java.PendingException();
-//    }
-//
+    @Then("User adds first product to cart")
+    public void userAddsFirstProductToCart() {
+        setUp.searchTastaturaPage.addFirstElements();
+    }
+
 //    @And("User adds second product to cart")
 //    public void userAddsSecondProductToCart() {
-//        throw new io.cucumber.java.PendingException();
+//        setUp.searchTastaturaPage.addSecondElements();
 //    }
-//
+
 //    @Then("User checks that the products are added to cart")
 //    public void userChecksThatTheProductsAreAddedToCart() {
 //        throw new io.cucumber.java.PendingException();

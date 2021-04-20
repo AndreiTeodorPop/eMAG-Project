@@ -1,7 +1,6 @@
 package pageObjects;
 
 import lombok.Getter;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +24,7 @@ public class HomePage {
     @FindBy(xpath = "//button[@class='btn btn-default searchbox-submit-button']")
     private WebElement searchButton;
 
+
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -39,11 +39,11 @@ public class HomePage {
         getCloseEmagGeniusAdd().click();
     }
 
-    public HomePage searchProduct(String product){
+    public SearchTastaturaPage searchProduct(String product){
         searchBar.clear();
         searchBar.sendKeys(product);
         searchButton.click();
-        return this;
+        return new SearchTastaturaPage(driver);
     }
 
     public HomePage validationHomePage(){

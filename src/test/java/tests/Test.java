@@ -9,7 +9,7 @@ import pageObjects.LoginPage;
 import java.util.concurrent.TimeUnit;
 
 public class Test {
-//    String driverPath = "src/main/resources\\chrome2driver.exe";
+//    String driverPath = "src/main/resources\\chromedriver.exe";
     WebDriver driver;
 
     HomePage obj_HomePage;

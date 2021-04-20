@@ -14,9 +14,10 @@ Feature:
   Scenario: User is on Home Page and searchs for a list of products
     Given User opens eMAG home page
     When User searches for tastatura in search bar
-#    And User selects eMAG genius products
-#    Then User adds first product to cart
+    And User selects eMAG genius products
+    Then User adds first product to cart
 #    And User adds second product to cart
+
 #    Then User checks that the products are added to cart
 #    And User deletes all the products from cart
 #    Then User navigates to home page
