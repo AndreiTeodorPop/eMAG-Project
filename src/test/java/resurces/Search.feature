@@ -11,17 +11,11 @@ Feature:
 #    Then Delete the product from shopping basket
 #    And User navigates to home page
 
-  Scenario: User is on Home Page and searchs for a list of products
+  Scenario: User is on Home Page and searches for a list of products
     Given User opens eMAG home page
     When User searches for tastatura in search bar
     And User selects eMAG genius products
-<<<<<<< Updated upstream
     Then User adds products to cart
-=======
-    Then User adds first product to cart
-    And User adds second product to cart
-
->>>>>>> Stashed changes
 #    Then User checks that the products are added to cart
 #    And User deletes all the products from cart
 #    Then User navigates to home page
