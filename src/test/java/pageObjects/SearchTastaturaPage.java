@@ -66,5 +66,4 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
-
 }

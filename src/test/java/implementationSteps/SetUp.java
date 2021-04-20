@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.BasketPage;
 import pageObjects.HomePage;
+import pageObjects.SearchCastiPage;
 import pageObjects.SearchTastaturaPage;
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,7 @@ public class SetUp {
     HomePage homePage;
     SearchTastaturaPage searchTastaturaPage;
     BasketPage basketPage;
+    SearchCastiPage castiPage;
 
     public SetUp(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -25,5 +27,6 @@ public class SetUp {
         homePage = new HomePage(driver);
         searchTastaturaPage = new SearchTastaturaPage(driver);
         basketPage = new BasketPage(driver);
+        castiPage = new SearchCastiPage(driver);
     }
 }

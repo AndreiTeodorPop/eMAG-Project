@@ -49,16 +49,19 @@ public class ImplementationSearch {
 
     @When("User searches for a list of products in casti category")
     public void userSearchesForAListOfProductsInCastiCategory() {
+        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Casti");
     }
 
-//    @Then("Show a list of casti products")
-//    public void showAListOfCastiProducts() {
-//    }
-//
-//    @When("User filters the list based on reviews")
-//    public void userFiltersTheListBasedOnReviews() {
-//    }
-//
+    @Then("Show a list of casti products")
+    public void showAListOfCastiProducts() {
+        setUp.castiPage.checkForCastiPage();
+    }
+
+    @When("User filters the list based on reviews")
+    public void userFiltersTheListBasedOnReviews() {
+        setUp.castiPage.filterByNrOfReviews();
+    }
+
 //    @Then("Show a list of casti products ordered by most reviews")
 //    public void showAListOfCastiProductsOrderedByMostReviews() {
 //    }
