@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,8 +21,17 @@ public class SearchTastaturaPage {
     private WebElement productOne;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
     private WebElement productTwo;
+
     @FindBy(xpath = "//*[@id=\"my_cart\"]/span[2]")
     private WebElement cartButton;
+
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
+    private WebElement deleteFirstProduct;
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
+    private WebElement deletSecond;
+    @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
+    private WebElement message;
+
 
 
     public SearchTastaturaPage(WebDriver driver) {
@@ -61,10 +71,9 @@ public class SearchTastaturaPage {
 
     public BasketPage checkPresenceOfProd() {
         cartButton.click();
-        //Assert.assertEquals(productOne.getText(), "Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
-        //Assert.assertEquals(productTwo.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow");
+//        Assert.assertEquals(productOne.getText(),"Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
+//        Assert.assertEquals(productTwo.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow")
         return new BasketPage(driver);
     }
-
 
 }
