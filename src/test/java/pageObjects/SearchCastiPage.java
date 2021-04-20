@@ -20,8 +20,11 @@ public class SearchCastiPage {
 
     @FindBy(xpath = "//title[text()='Cauți Casti? Alege din oferta eMAG.ro']")
     private WebElement castiPageTitle;
-    @FindBy(xpath = "//ul[@class='dropdown-menu']")
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-alt sort-control-btn']")
     private WebElement dropDown;
+    @FindBy(xpath = "//a[@data-sort-id='reviews'][@class='js-sort-option']")
+//    @FindBy(linkText = "Nr. review-uri")
+    private WebElement dropDownOrderByReviews;
 
     public SearchCastiPage(WebDriver driver) {
         this.driver = driver;
@@ -34,8 +37,8 @@ public class SearchCastiPage {
     }
 
     public SearchCastiPage filterByNrOfReviews () {
-        Select select = new Select(dropDown);
-        select.selectByVisibleText("Nr. review-uri");
+        dropDown.click();
+        dropDownOrderByReviews.click();
         return this;
     }
 }
