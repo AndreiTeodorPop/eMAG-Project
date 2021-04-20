@@ -14,9 +14,9 @@ public class SearchTastaturaPage {
 
     @FindBy(xpath = "//a[text()='Livrate de eMAG ']")
     private WebElement checkEmagGenius;
-    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[3]/div[3]/form/button")
+    @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[1]")
     private WebElement firstProduct;
-    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[2]/div[2]/div/div[3]/div[3]/form/button")
+    @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[2]")
     private WebElement secondProduct;
     @FindBy(xpath = "//button[@class='close gtm_6046yfqs']")
     private WebElement closeSuggestions;
@@ -36,23 +36,28 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public void waitForVisibilityOfElementErrorMessage(){
+    public void waitForVisibilityOfElementErrorMessage() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[3]/div[3]/form/button")));
     }
-    public SearchTastaturaPage addFirstElements(){
-        scrollToElement(firstProduct);
-        firstProduct.click();
-        closeSuggestions.click();
+
+    public SearchTastaturaPage addElements() {
+        try {
+            scrollToElement(firstProduct);
+            firstProduct.click();
+            closeSuggestions.click();
+            scrollToElement(secondProduct);
+            secondProduct.click();
+            closeSuggestions.click();
+        } catch (org.openqa.selenium.StaleElementReferenceException ex) {
+            scrollToElement(firstProduct);
+            firstProduct.click();
+            closeSuggestions.click();
+            scrollToElement(secondProduct);
+            secondProduct.click();
+            closeSuggestions.click();
+        }
         return this;
     }
-
-    public SearchTastaturaPage addSecondElements(){
-        scrollToElement(secondProduct);
-        secondProduct.click();
-        closeSuggestions.click();
-        return this;
-    }
-
 
 }

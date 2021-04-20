@@ -25,18 +25,14 @@ public class ImplementationSearch {
 
     @And("User selects eMAG genius products")
     public void userSelectsEMAGGeniusProducts() {
-       setUp.searchTastaturaPage.selectEmagGenius();
+        setUp.searchTastaturaPage.selectEmagGenius();
     }
 
-    @Then("User adds first product to cart")
-    public void userAddsFirstProductToCart() {
-        setUp.searchTastaturaPage.addFirstElements();
-    }
 
-//    @And("User adds second product to cart")
-//    public void userAddsSecondProductToCart() {
-//        setUp.searchTastaturaPage.addSecondElements();
-//    }
+    @Then("User adds products to cart")
+    public void userAddsProductsToCart() {
+        setUp.searchTastaturaPage.addElements();
+    }
 
 //    @Then("User checks that the products are added to cart")
 //    public void userChecksThatTheProductsAreAddedToCart() {
