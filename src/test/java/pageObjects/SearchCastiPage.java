@@ -23,7 +23,6 @@ public class SearchCastiPage {
     @FindBy(xpath = "//button[@class='btn btn-sm btn-alt sort-control-btn']")
     private WebElement dropDown;
     @FindBy(xpath = "//a[@data-sort-id='reviews'][@class='js-sort-option']")
-//    @FindBy(linkText = "Nr. review-uri")
     private WebElement dropDownOrderByReviews;
 
     public SearchCastiPage(WebDriver driver) {

@@ -29,11 +29,11 @@ Feature:
 #    And User deletes the products from the cart
 #    Then User navigates to home page
 #
-#  Scenario: Sort a list of products in order to get the one with the most reviews
-#    Given User opens eMAG home page
-#    When User searches for a list of products in casti category
-#    Then Show a list of casti products
-#    When User filters the list based on reviews
+  Scenario: Sort a list of products in order to get the one with the most reviews
+    Given User opens eMAG home page
+    When User searches for a list of products in casti category
+    Then Show a list of casti products
+    When User filters the list based on reviews
 #    Then Show a list of casti products ordered by most reviews
 #    When User selects desired product to see his review
 #    Then Show selected product page info
