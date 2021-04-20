@@ -33,7 +33,6 @@ public class SearchTastaturaPage {
     private WebElement message;
 
 
-
     public SearchTastaturaPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -48,7 +47,6 @@ public class SearchTastaturaPage {
         checkEmagGenius.click();
         return this;
     }
-
 
     public SearchTastaturaPage addElements() {
         try {
