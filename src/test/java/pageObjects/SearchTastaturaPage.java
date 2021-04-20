@@ -40,7 +40,7 @@ public class SearchTastaturaPage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[3]/div[3]/form/button")));
     }
-<<<<<<< Updated upstream
+
 
     public SearchTastaturaPage addElements() {
         try {
@@ -58,21 +58,6 @@ public class SearchTastaturaPage {
             secondProduct.click();
             closeSuggestions.click();
         }
-=======
-    public SearchTastaturaPage addFirstElement(){
-        waitForVisibilityOfElementErrorMessage();
-        scrollToElement(firstProduct);
-        firstProduct.click();
-        closeSuggestions.click();
         return this;
     }
-
-    public SearchTastaturaPage addSecondElement(){
-        scrollToElement(secondProduct);
-        secondProduct.click();
-        closeSuggestions.click();
->>>>>>> Stashed changes
-        return this;
-    }
-
 }
