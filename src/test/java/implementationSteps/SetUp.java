@@ -2,6 +2,7 @@ package implementationSteps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageObjects.BasketPage;
 import pageObjects.HomePage;
 import pageObjects.SearchTastaturaPage;
 
@@ -12,6 +13,7 @@ public class SetUp {
     WebDriver driver;
     HomePage homePage;
     SearchTastaturaPage searchTastaturaPage;
+    BasketPage basketPage;
 
     public SetUp(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -22,5 +24,6 @@ public class SetUp {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         homePage = new HomePage(driver);
         searchTastaturaPage = new SearchTastaturaPage(driver);
+        basketPage = new BasketPage(driver);
     }
 }

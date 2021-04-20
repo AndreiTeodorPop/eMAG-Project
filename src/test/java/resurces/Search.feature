@@ -11,7 +11,7 @@ Feature:
 #    Then Delete the product from shopping basket
 #    And User navigates to home page
 
-  Scenario: User is on Home Page and searchs for a list of products
+  Scenario: User is on Home Page and searches for a list of products
     Given User opens eMAG home page
     When User searches for tastatura in search bar
     And User selects eMAG genius products
@@ -29,9 +29,9 @@ Feature:
 #    And User deletes the products from the cart
 #    Then User navigates to home page
 #
-#  Scenario: Sort a list of products in order to get the one with the most reviews
-#    Given User opens eMAG home page
-#    When User searches for a list of products in casti category
+  Scenario: Sort a list of products in order to get the one with the most reviews
+    Given User opens eMAG home page
+    When User searches for a list of products in casti category
 #    Then Show a list of casti products
 #    When User filters the list based on reviews
 #    Then Show a list of casti products ordered by most reviews

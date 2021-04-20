@@ -1,15 +1,9 @@
 package pageObjects;
 
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class SearchTastaturaPage {
     WebDriver driver;
@@ -22,20 +16,13 @@ public class SearchTastaturaPage {
     private WebElement secondProduct;
     @FindBy(xpath = "//button[@class='close gtm_6046yfqs']")
     private WebElement closeSuggestions;
-    @FindBy(xpath = "//*[@id=\"my_cart\"]/span[2]")
-    private WebElement cartButton;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
     private WebElement productOne;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
     private WebElement productTwo;
-    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
-    private WebElement deleteFirstProduct;
-    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
-    private WebElement deletSecond;
-    @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
-    private WebElement message;
-    @FindBy(xpath = "//*[@id=\"emg-fluid-header\"]/div/div[1]/a/img")
-    private WebElement logo;
+    @FindBy(xpath = "//*[@id=\"my_cart\"]/span[2]")
+    private WebElement cartButton;
+
 
     public SearchTastaturaPage(WebDriver driver) {
         this.driver = driver;
@@ -52,10 +39,6 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public void waitForVisibilityOfElementErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[3]/a[1]")));
-    }
 
     public SearchTastaturaPage addElements() {
         try {
@@ -76,32 +59,11 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public SearchTastaturaPage checkPresenceOfProd() {
+    public BasketPage checkPresenceOfProd() {
         cartButton.click();
-        Assert.assertEquals(productOne.getText(),"Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
-        Assert.assertEquals(productTwo.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow");
-        return this;
-    }
-
-    public SearchTastaturaPage deleteProducts() {
-        try {
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deletSecond.click();
-            Assert.assertTrue(message.isDisplayed());
-        } catch (StaleElementReferenceException ex) {
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deletSecond.click();
-            Assert.assertTrue(message.isDisplayed());
-        }
-        return this;
-    }
-
-    public HomePage navigateToHomePage(){
-        logo.click();
-        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
-        return new HomePage(driver);
+        //Assert.assertEquals(productOne.getText(), "Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
+        //Assert.assertEquals(productTwo.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow");
+        return new BasketPage(driver);
     }
 
 
