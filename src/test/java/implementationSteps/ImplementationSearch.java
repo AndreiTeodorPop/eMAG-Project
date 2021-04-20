@@ -34,7 +34,6 @@ public class ImplementationSearch {
         setUp.searchTastaturaPage.addElements();
     }
 
-
     @Then("User adds products to cart")
     public void userAddsProductsToCart() {
         setUp.searchTastaturaPage.addElements();
