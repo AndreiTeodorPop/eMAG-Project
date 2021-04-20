@@ -33,21 +33,20 @@ public class ImplementationSearch {
         setUp.searchTastaturaPage.addElements();
     }
 
+    @Then("User checks that the products are added to cart")
+    public void userChecksThatTheProductsAreAddedToCart() {
+        setUp.searchTastaturaPage.checkPresenceOfProd();
+    }
 
-//    @Then("User checks that the products are added to cart")
-//    public void userChecksThatTheProductsAreAddedToCart() {
-//        throw new io.cucumber.java.PendingException();
-//    }
-//
-//    @And("User deletes all the products from cart")
-//    public void userDeletesAllTheProductsFromCart() {
-//        throw new io.cucumber.java.PendingException();
-//    }
-//
-//    @Then("User navigates to home page")
-//    public void userNavigatesToHomePage() {
-//        throw new io.cucumber.java.PendingException();
-//    }
+    @And("User deletes all the products from cart")
+    public void userDeletesAllTheProductsFromCart() {
+        setUp.searchTastaturaPage.deleteProducts();
+    }
+
+    @Then("User navigates to home page")
+    public void userNavigatesToHomePage() {
+        setUp.searchTastaturaPage.navigateToHomePage();
+    }
 
 
 }
