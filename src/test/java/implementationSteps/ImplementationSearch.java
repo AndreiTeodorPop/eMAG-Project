@@ -69,6 +69,41 @@ public class ImplementationSearch {
         setUp.castiPage.filterByNrOfReviews();
     }
 
+    @When("User writes in the search field the product name and presses on cauta button")
+    public void userWritesInTheSearchFieldTheProductNameAndPressesOnCautaButton() {
+        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Televizoare");
+    }
+
+    @Then("All products from televizoare are displayed")
+    public void allProductsFromTelevizoareAreDisplayed() {
+        setUp.searchTelevizoarePage.productsTvAreDisplayed();
+    }
+
+    @And("User filters from disponibilitate products which are resigilate")
+    public void userFiltersFromDisponibilitateProductsWhichAreResigilate() {
+        setUp.searchTelevizoarePage.filterTvFromDisponibilitate();
+    }
+
+    @When("Navigate on diagonala display of the first product")
+    public void navigateOnDiagonalaDisplayOfTheFirstProduct() throws InterruptedException {
+        setUp.searchTelevizoarePage.waitForVisibilityOfElement();
+        //Thread.sleep(2000);
+        setUp.searchTelevizoarePage.selectDiagonalaDisplay();
+    }
+
+    @And("Add the product to shopping basket")
+    public void addTheProductToShoppingBasket() {
+        setUp.searchTelevizoarePage.addToShoppingBasket();
+    }
+
+    @Then("Check if the product is in the shopping basket")
+    public void checkIfTheProductIsInTheShoppingBasket() {
+    }
+
+    @Then("Delete the product from shopping basket")
+    public void deleteTheProductFromShoppingBasket() {
+    }
+
 //    @Then("Show a list of casti products ordered by most reviews")
 //    public void showAListOfCastiProductsOrderedByMostReviews() {
 //    }

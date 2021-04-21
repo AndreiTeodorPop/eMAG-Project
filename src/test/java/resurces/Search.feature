@@ -1,12 +1,12 @@
 Feature:
 
-#  Scenario: User searches a product from Televizoare Resigilate
-#    Given User opens eMAG home page
-#    When User writes in the search field the product name and presses on cauta button
-#    Then All products from televizoare are displayed
-#    And User filters from disponibilitate products which are resigilate
-#    Then Navigate on diagonala display of the first product
-#    And Add the product to shopping basket
+  Scenario: User searches a product from Televizoare Resigilate
+    Given User opens eMAG home page
+    When User writes in the search field the product name and presses on cauta button
+    Then All products from televizoare are displayed
+    And User filters from disponibilitate products which are resigilate
+    When Navigate on diagonala display of the first product
+    And Add the product to shopping basket
 #    Then Check if the product is in the shopping basket
 #    Then Delete the product from shopping basket
 #    And User navigates to home page
