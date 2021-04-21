@@ -16,7 +16,7 @@ public class SetUp {
     SearchTelevizoarePage searchTelevizoarePage;
     SearchMousePage searchMousePage;
 
-    public SetUp(){
+    public SetUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://emag.ro/");
@@ -27,7 +27,7 @@ public class SetUp {
         searchTastaturaPage = new SearchTastaturaPage(driver);
         basketPage = new BasketPage(driver);
         searchCastiPage = new SearchCastiPage(driver);
-        searchTelevizoarePage=new SearchTelevizoarePage(driver);
+        searchTelevizoarePage = new SearchTelevizoarePage(driver);
         searchMousePage = new SearchMousePage(driver);
     }
 

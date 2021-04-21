@@ -39,7 +39,7 @@ public class ImplementationSearch {
 
     @And("User deletes all the products from cart")
     public void userDeletesAllTheProductsFromCart() {
-        setUp.basketPage.deleteProducts();
+        setUp.basketPage.deleteTastaturaProducts();
     }
 
     @And("User navigates to home page and quit the browser")
@@ -97,7 +97,7 @@ public class ImplementationSearch {
 
     @Then("Delete the product from shopping basket")
     public void deleteTheProductFromShoppingBasket() {
-        setUp.basketPage.deleteProduct();
+        setUp.basketPage.deleteTelevizorProduct();
     }
 
     //    @Then("Show a list of casti products ordered by most reviews")

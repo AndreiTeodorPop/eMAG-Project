@@ -49,7 +49,7 @@ public class BasketPage {
     }
 
 
-    public BasketPage deleteProducts() {
+    public BasketPage deleteTastaturaProducts() {
         try {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
@@ -75,9 +75,8 @@ public class BasketPage {
         return this;
     }
 
-    public BasketPage deleteProduct() {
+    public BasketPage deleteTelevizorProduct() {
         deleteFirstProduct.click();
-        Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
         return this;
     }
 
@@ -86,6 +85,7 @@ public class BasketPage {
         Assert.assertTrue(productTwo.getText().contains("Tastatura"));
         return new BasketPage(driver);
     }
+
     public BasketPage checkPresenceOfMouses() {
         Assert.assertTrue(mouseText1.getText().contains("Mouse"));
         Assert.assertTrue(mouseText2.getText().contains("Mouse"));
@@ -93,15 +93,14 @@ public class BasketPage {
         return this;
     }
 
-    public BasketPage deleteMouseProducts(){
+    public BasketPage deleteMouseProducts() {
         try {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
             deleteFirstProduct.click();
-        }catch (StaleElementReferenceException ex)
-        {
+        } catch (StaleElementReferenceException ex) {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
             deleteFirstProduct.click();
@@ -111,7 +110,7 @@ public class BasketPage {
         return this;
     }
 
-    public BasketPage emptyBasketValidation(){
+    public BasketPage emptyBasketValidation() {
         Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
         return this;
     }
