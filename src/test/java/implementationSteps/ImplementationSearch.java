@@ -47,6 +47,7 @@ public class ImplementationSearch {
         setUp.basketPage.navigateToHomePage();
     }
 
+<<<<<<< Updated upstream
     @When("User searches for a list of products in casti category")
     public void userSearchesForAListOfProductsInCastiCategory() {
         setUp.searchTastaturaPage = setUp.homePage.searchProduct("Casti");
@@ -120,4 +121,6 @@ public class ImplementationSearch {
         setUp.castiPage.displayProductReview();
     }
 
+=======
+>>>>>>> Stashed changes
 }
