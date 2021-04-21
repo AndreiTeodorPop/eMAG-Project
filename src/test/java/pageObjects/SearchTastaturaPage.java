@@ -77,6 +77,11 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     public SearchTastaturaPage deleteProducts() {
         try {
             deleteFirstProduct.click();
@@ -93,4 +98,10 @@ public class SearchTastaturaPage {
         Assert.assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
         return new HomePage(driver);
     }
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 }
