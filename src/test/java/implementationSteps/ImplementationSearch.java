@@ -34,6 +34,7 @@ public class ImplementationSearch {
 
     @Then("User checks that the products are added to cart")
     public void userChecksThatTheProductsAreAddedToCart() {
+        setUp.searchTastaturaPage.goToBasketPage();
         setUp.searchTastaturaPage.checkPresenceOfProd();
     }
 

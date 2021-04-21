@@ -72,8 +72,11 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public BasketPage checkPresenceOfProd() {
+    public BasketPage goToBasketPage() {
         cartButton.click();
+        return new BasketPage(driver);
+    }
+    public BasketPage checkPresenceOfProd() {
         Assert.assertTrue(productOne.getText().contains("Tastatura"));
         Assert.assertTrue(productTwo.getText().contains("Tastatura"));
         return new BasketPage(driver);
