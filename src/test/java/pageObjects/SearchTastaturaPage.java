@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Created by diana on 20 Apr 2021
+ */
 
 public class SearchTastaturaPage {
     WebDriver driver;
@@ -77,11 +79,6 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
     public SearchTastaturaPage deleteProducts() {
         try {
             deleteFirstProduct.click();
@@ -93,15 +90,5 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public HomePage navigateToHomePage(){
-        driver.navigate().to("https://www.emag.ro/");
-        Assert.assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
-        return new HomePage(driver);
-    }
-<<<<<<< Updated upstream
-=======
 
-
-
->>>>>>> Stashed changes
 }
