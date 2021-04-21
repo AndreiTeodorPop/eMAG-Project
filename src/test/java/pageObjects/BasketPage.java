@@ -12,10 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by atpop on 20 Apr 2021
- */
-
 public class BasketPage {
 
     WebDriver driver;
