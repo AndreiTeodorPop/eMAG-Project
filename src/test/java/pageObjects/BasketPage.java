@@ -29,7 +29,9 @@ public class BasketPage {
     @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
     private WebElement deleteSecondProduct;
     @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
-    private WebElement message;
+    private WebElement messageEmptyShoppingBasket;
+    @FindBy(xpath = "//a[@class='line-item-title main-product-title']")
+    private WebElement tvProductText;
 
 
     public BasketPage(WebDriver driver) {
@@ -43,18 +45,17 @@ public class BasketPage {
     }
 
 
-
     public BasketPage deleteProducts() {
         try {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
             deleteSecondProduct.click();
-            Assert.assertTrue(message.isDisplayed());
+            Assert.assertTrue(messageEmptyShoppingBasket.isDisplayed());
         } catch (StaleElementReferenceException ex) {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();
             deleteSecondProduct.click();
-            Assert.assertTrue(message.isDisplayed());
+            Assert.assertTrue(messageEmptyShoppingBasket.isDisplayed());
         }
         return this;
     }
@@ -63,6 +64,17 @@ public class BasketPage {
         driver.navigate().to("https://www.emag.ro/");
         assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
         return new HomePage(driver);
+    }
+
+    public BasketPage checkTvProductsIsDisplayed() {
+        Assert.assertTrue(tvProductText.getText().contains("Televizor"));
+        return this;
+    }
+
+    public BasketPage deleteProduct() {
+        deleteFirstProduct.click();
+        Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
+        return this;
     }
 
 }

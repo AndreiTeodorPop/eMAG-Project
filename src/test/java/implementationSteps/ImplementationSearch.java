@@ -24,7 +24,7 @@ public class ImplementationSearch {
 
     @And("User selects eMAG genius products")
     public void userSelectsEMAGGeniusProducts() {
-       setUp.searchTastaturaPage.selectEmagGenius();
+        setUp.searchTastaturaPage.selectEmagGenius();
     }
 
     @Then("User adds products to cart")
@@ -91,13 +91,16 @@ public class ImplementationSearch {
 
     @Then("Check if the product is in the shopping basket")
     public void checkIfTheProductIsInTheShoppingBasket() {
+        setUp.searchTelevizoarePage.goToBasketPage();
+        setUp.basketPage.checkTvProductsIsDisplayed();
     }
 
     @Then("Delete the product from shopping basket")
     public void deleteTheProductFromShoppingBasket() {
+        setUp.basketPage.deleteProduct();
     }
 
-//    @Then("Show a list of casti products ordered by most reviews")
+    //    @Then("Show a list of casti products ordered by most reviews")
 //    public void showAListOfCastiProductsOrderedByMostReviews() {
 //    }
 //
@@ -106,7 +109,8 @@ public class ImplementationSearch {
 //        Thread.sleep(2000);
         setUp.castiPage.selectProductByReview();
     }
-//
+
+    //
 //    @Then("Show selected product page info")
 //    public void showSelectedProductPageInfo() {
 //    }
