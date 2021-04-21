@@ -100,21 +100,19 @@ public class ImplementationSearch {
         setUp.basketPage.deleteTelevizorProduct();
     }
 
-    //    @Then("Show a list of casti products ordered by most reviews")
-//    public void showAListOfCastiProductsOrderedByMostReviews() {
-//    }
-//
-    @When("User selects desired product to see his review")
+
+    @And("User selects desired product to see his review")
     public void userSelectsDesiredProductToSeeHisReview() {
         setUp.searchCastiPage.selectProductByReview();
     }
 
-    //
-//    @Then("Show selected product page info")
-//    public void showSelectedProductPageInfo() {
-//    }
-//
-    @And("Product review is displayed in console")
+
+    @Then("Show selected product page info")
+    public void showSelectedProductPageInfo() {
+        setUp.searchCastiPage.checkForFirstCastiProductPage();
+    }
+
+    @Then("Product review is displayed in console")
     public void productReviewIsDisplayedInConsole() {
         setUp.searchCastiPage.displayProductReview();
     }

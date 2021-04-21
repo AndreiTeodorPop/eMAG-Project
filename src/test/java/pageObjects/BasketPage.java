@@ -65,19 +65,14 @@ public class BasketPage {
     }
 
     public BasketPage deleteMouseProducts() {
-        try {
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deleteFirstProduct.click();
-        } catch (StaleElementReferenceException ex) {
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deleteFirstProduct.click();
-        }
+        deleteFirstProduct.click();
+        //waitForVisibilityOfElementErrorMessage();
+        driver.navigate().refresh();
+        deleteFirstProduct.click();
+        //waitForVisibilityOfElementErrorMessage();
+        driver.navigate().refresh();
+        deleteFirstProduct.click();
+        driver.navigate().refresh();
         return this;
     }
 

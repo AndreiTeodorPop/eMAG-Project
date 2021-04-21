@@ -35,8 +35,7 @@ Feature: User searches for a different types of products on eMAG website
     When User searches for a list of products in casti category
     Then Show a list of casti products
     When User filters the list based on reviews
-#    Then Show a list of casti products ordered by most reviews
-    When User selects desired product to see his review
-#    Then Show selected product page info
-    And Product review is displayed in console
+    And User selects desired product to see his review
+    Then Show selected product page info
+    Then Product review is displayed in console
     And User navigates to home page and quit the browser

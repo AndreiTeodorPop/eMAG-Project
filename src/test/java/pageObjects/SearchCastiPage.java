@@ -5,6 +5,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.StringTokenizer;
+
 
 /**
  * Created by atpop on 20 Apr 2021
@@ -24,6 +26,12 @@ public class SearchCastiPage {
     private WebElement productReviewButton;
     @FindBy(xpath = "//p[@class='review-rating-data']")
     private WebElement productReviewNote;
+    @FindBy(xpath = "(//a[@class='product-title js-product-url'])[1]")
+    private WebElement firstCastiProduct;
+    @FindBy(xpath = "(//a[text()='Casti audio JBL'])[1]")
+    private WebElement firstCastiProductType;
+
+    private String productName;
 
     public SearchCastiPage(WebDriver driver) {
         this.driver = driver;
@@ -39,9 +47,15 @@ public class SearchCastiPage {
         return this;
     }
 
+    public SearchCastiPage checkForFirstCastiProductPage() {
+        Assert.assertEquals(firstCastiProductType.getText(), "Casti audio JBL");
+        return this;
+    }
+
     public SearchCastiPage filterByNrOfReviews() {
         dropDown.click();
         dropDownOrderByReviews.click();
+        productName = firstCastiProduct.getText();
         return this;
     }
 
@@ -57,6 +71,12 @@ public class SearchCastiPage {
     }
 
     public void displayProductReview() {
-        System.out.println("Product review note: " + productReviewNote.getText());
+        StringTokenizer tokenizer = new StringTokenizer(productName, ",");
+        System.out.println("First product name and review note: ");
+        System.out.println("===================================");
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
+        }
+        System.out.println("----------------" + productReviewNote.getText() + "----------------");
     }
 }
