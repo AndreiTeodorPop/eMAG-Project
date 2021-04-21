@@ -49,7 +49,7 @@ public class BasketPage {
     }
 
 
-    public BasketPage deleteProducts() {
+    public BasketPage deleteTastaturaProducts() {
         try {
             deleteFirstProduct.click();
             waitForVisibilityOfElementErrorMessage();

@@ -51,7 +51,7 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public SearchTastaturaPage addElements() {
+    public SearchTastaturaPage addTastaturaProducts() {
         try {
             scrollToElement(firstProduct);
             firstProduct.click();

@@ -38,7 +38,7 @@ public class ImplementationSearch {
 
     @Then("User adds products to cart")
     public void userAddsProductsToCart() {
-        setUp.searchTastaturaPage.addElements();
+        setUp.searchTastaturaPage.addTastaturaProducts();
     }
 
     @Then("User checks that the products are added to cart")
@@ -49,7 +49,7 @@ public class ImplementationSearch {
 
     @And("User deletes all the products from cart")
     public void userDeletesAllTheProductsFromCart() {
-        setUp.basketPage.deleteProducts();
+        setUp.basketPage.deleteTastaturaProducts();
     }
 
     @And("User navigates to home page and quit the browser")
