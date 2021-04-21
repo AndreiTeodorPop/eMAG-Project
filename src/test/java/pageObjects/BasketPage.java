@@ -72,5 +72,9 @@ public class BasketPage {
         Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
         return this;
     }
-
+    public BasketPage checkPresenceOfProd() {
+        Assert.assertTrue(productOne.getText().contains("Tastatura"));
+        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
+        return new BasketPage(driver);
+    }
 }
