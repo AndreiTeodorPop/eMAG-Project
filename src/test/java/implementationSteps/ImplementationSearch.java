@@ -24,9 +24,10 @@ public class ImplementationSearch {
 
     @And("User selects eMAG genius products")
     public void userSelectsEMAGGeniusProducts() {
-       setUp.searchTastaturaPage.selectEmagGenius();
+        setUp.searchTastaturaPage.selectEmagGenius();
     }
 
+<<<<<<< HEAD
     @Then("User adds products to cart")
     public void userAddsProductsToCart() {
         setUp.searchTastaturaPage.addElements();
@@ -50,6 +51,12 @@ public class ImplementationSearch {
     @When("User searches for a list of products in casti category")
     public void userSearchesForAListOfProductsInCastiCategory() {
         setUp.searchTastaturaPage = setUp.homePage.searchProduct("Casti");
+=======
+
+    @Then("User adds products to cart")
+    public void userAddsProductsToCart() {
+        setUp.searchTastaturaPage.addElements();
+>>>>>>> beababbb4fe46eaa05ffc2d83d6a0bcd6de2cb3c
     }
 
     @Then("Show a list of casti products")

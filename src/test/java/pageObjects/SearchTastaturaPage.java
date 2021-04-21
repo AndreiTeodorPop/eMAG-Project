@@ -49,6 +49,7 @@ public class SearchTastaturaPage {
         return this;
     }
 
+<<<<<<< HEAD
     public SearchTastaturaPage addElements() {
         try {
             scrollToElement(firstProduct);
@@ -77,4 +78,29 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
+=======
+    public void waitForVisibilityOfElementErrorMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[3]/div[3]/form/button")));
+    }
+
+    public SearchTastaturaPage addElements() {
+        try {
+            scrollToElement(firstProduct);
+            firstProduct.click();
+            closeSuggestions.click();
+            scrollToElement(secondProduct);
+            secondProduct.click();
+            closeSuggestions.click();
+        } catch (org.openqa.selenium.StaleElementReferenceException ex) {
+            scrollToElement(firstProduct);
+            firstProduct.click();
+            closeSuggestions.click();
+            scrollToElement(secondProduct);
+            secondProduct.click();
+            closeSuggestions.click();
+        }
+        return this;
+    }
+>>>>>>> beababbb4fe46eaa05ffc2d83d6a0bcd6de2cb3c
 }

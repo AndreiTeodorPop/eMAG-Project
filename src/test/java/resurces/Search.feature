@@ -16,9 +16,15 @@ Feature:
     When User searches for tastatura in search bar
     And User selects eMAG genius products
     Then User adds products to cart
+<<<<<<< HEAD
     Then User checks that the products are added to cart
     And User deletes all the products from cart
     Then User navigates to home page
+=======
+#    Then User checks that the products are added to cart
+#    And User deletes all the products from cart
+#    Then User navigates to home page
+>>>>>>> beababbb4fe46eaa05ffc2d83d6a0bcd6de2cb3c
 #
 #  Scenario: Adding the first 3 products in the cart depending on their ascending price
 #    Given User opens eMAG home page
