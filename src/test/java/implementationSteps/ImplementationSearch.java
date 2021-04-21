@@ -24,10 +24,9 @@ public class ImplementationSearch {
 
     @And("User selects eMAG genius products")
     public void userSelectsEMAGGeniusProducts() {
-        setUp.searchTastaturaPage.selectEmagGenius();
+       setUp.searchTastaturaPage.selectEmagGenius();
     }
 
-<<<<<<< HEAD
     @Then("User adds products to cart")
     public void userAddsProductsToCart() {
         setUp.searchTastaturaPage.addElements();
@@ -51,12 +50,6 @@ public class ImplementationSearch {
     @When("User searches for a list of products in casti category")
     public void userSearchesForAListOfProductsInCastiCategory() {
         setUp.searchTastaturaPage = setUp.homePage.searchProduct("Casti");
-=======
-
-    @Then("User adds products to cart")
-    public void userAddsProductsToCart() {
-        setUp.searchTastaturaPage.addElements();
->>>>>>> beababbb4fe46eaa05ffc2d83d6a0bcd6de2cb3c
     }
 
     @Then("Show a list of casti products")
@@ -108,16 +101,19 @@ public class ImplementationSearch {
 //    public void showAListOfCastiProductsOrderedByMostReviews() {
 //    }
 //
-//    @When("User selects desired product to see his review")
-//    public void userSelectsDesiredProductToSeeHisReview() {
-//    }
+    @When("User selects desired product to see his review")
+    public void userSelectsDesiredProductToSeeHisReview() throws InterruptedException {
+//        Thread.sleep(2000);
+        setUp.castiPage.selectProductByReview();
+    }
 //
 //    @Then("Show selected product page info")
 //    public void showSelectedProductPageInfo() {
 //    }
 //
-//    @And("Product review is displayed in console")
-//    public void productReviewIsDisplayedInConsole() {
-//    }
+    @And("Product review is displayed in console")
+    public void productReviewIsDisplayedInConsole() {
+        setUp.castiPage.displayProductReview();
+    }
 
 }

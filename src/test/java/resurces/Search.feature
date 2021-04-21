@@ -16,15 +16,9 @@ Feature:
     When User searches for tastatura in search bar
     And User selects eMAG genius products
     Then User adds products to cart
-<<<<<<< HEAD
     Then User checks that the products are added to cart
     And User deletes all the products from cart
     Then User navigates to home page
-=======
-#    Then User checks that the products are added to cart
-#    And User deletes all the products from cart
-#    Then User navigates to home page
->>>>>>> beababbb4fe46eaa05ffc2d83d6a0bcd6de2cb3c
 #
 #  Scenario: Adding the first 3 products in the cart depending on their ascending price
 #    Given User opens eMAG home page
@@ -41,7 +35,7 @@ Feature:
     Then Show a list of casti products
     When User filters the list based on reviews
 #    Then Show a list of casti products ordered by most reviews
-#    When User selects desired product to see his review
+    When User selects desired product to see his review
 #    Then Show selected product page info
-#    And Product review is displayed in console
-#    Then User navigates to home page
+    And Product review is displayed in console
+    Then User navigates to home page
