@@ -24,13 +24,11 @@ public class SearchTelevizoarePage {
     private WebElement filterResigilate;
     @FindBy(xpath = "(//a[@class='card-family-options'])[1]")
     private WebElement varianteDiagonalaDisplayed;
-    //    @FindBy(xpath = "//a[@href='https://www.emag.ro/televizor-led-star-light-80-cm-32dm3500-hd-clasa-f-rsgemag4268360x-32dm3500/pd/D13W62BBM/?X-Search-Id=ca8f03d625ad23954bd5&X-Product-Id=8009487&X-Search-Page=1&X-Search-Position=0&X-Section=search&X-MB=0&X-Search-Action=view&ref=view-family'][@class='card-family-options']")
-//    private WebElement varianteDisplayed;
     @FindBy(xpath = "//button[@type='submit' and @class='btn btn-default btn-sm btn-block bundle-product-buy-button po-text-small gtm_nhdl6r']")
     private WebElement cumparaResigilatButton;
     @FindBy(xpath = "//button[@type='button' and @class='close gtm_6046yfqs']")
     private WebElement closeSugestion;
-    @FindBy(xpath = "//*[@id=\"my_cart\"]/span[2]")
+    @FindBy(id = "my_cart")
     private WebElement shoppingBasketButton;
 
     public void scrollToElement(WebElement element) {

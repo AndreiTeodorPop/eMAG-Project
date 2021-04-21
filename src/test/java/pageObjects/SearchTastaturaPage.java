@@ -26,7 +26,7 @@ public class SearchTastaturaPage {
     private WebElement productOne;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
     private WebElement productTwo;
-    @FindBy(xpath = "//*[@id=\"my_cart\"]/span[2]")
+    @FindBy(id = "my_cart")
     private WebElement cartButton;
     @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
     private WebElement deleteFirstProduct;
@@ -77,4 +77,20 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
+    public SearchTastaturaPage deleteProducts() {
+        try {
+            deleteFirstProduct.click();
+            Assert.assertTrue(message.isDisplayed());
+        } catch (StaleElementReferenceException ex) {
+            deleteFirstProduct.click();
+            Assert.assertTrue(message.isDisplayed());
+        }
+        return this;
+    }
+
+    public HomePage navigateToHomePage(){
+        driver.navigate().to("https://www.emag.ro/");
+        Assert.assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
+        return new HomePage(driver);
+    }
 }
