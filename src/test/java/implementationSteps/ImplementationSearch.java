@@ -34,7 +34,7 @@ public class ImplementationSearch {
     @Then("User checks that the products are added to cart")
     public void userChecksThatTheProductsAreAddedToCart() {
         setUp.searchTastaturaPage.goToBasketPage();
-        setUp.basketPage.checkPresenceOfProd();
+        setUp.basketPage.checkTastaturaProductsIsDisplayed();
     }
 
     @And("User deletes all the products from cart")
@@ -138,7 +138,7 @@ public class ImplementationSearch {
     @Then("The three products should be in my shopping cart")
     public void theThreeProductsShouldBeInMyShoppingCart() {
         setUp.basketPage = setUp.searchMousePage.goToBasketPage();
-        setUp.basketPage.checkPresenceOfMouses();
+        setUp.basketPage.checkMouseProductsIsDisplayed();
     }
 
     @When("User delete the products from the cart")

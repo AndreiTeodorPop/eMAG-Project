@@ -64,35 +64,6 @@ public class BasketPage {
         return this;
     }
 
-    public HomePage navigateToHomePage() {
-        driver.navigate().to("https://www.emag.ro/");
-        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
-        return new HomePage(driver);
-    }
-
-    public BasketPage checkTvProductsIsDisplayed() {
-        Assert.assertTrue(tvProductText.getText().contains("Televizor"));
-        return this;
-    }
-
-    public BasketPage deleteTelevizorProduct() {
-        deleteFirstProduct.click();
-        return this;
-    }
-
-    public BasketPage checkPresenceOfProd() {
-        Assert.assertTrue(productOne.getText().contains("Tastatura"));
-        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
-        return new BasketPage(driver);
-    }
-
-    public BasketPage checkPresenceOfMouses() {
-        Assert.assertTrue(mouseText1.getText().contains("Mouse"));
-        Assert.assertTrue(mouseText2.getText().contains("Mouse"));
-        Assert.assertTrue(mouseText3.getText().contains("Mouse"));
-        return this;
-    }
-
     public BasketPage deleteMouseProducts() {
         try {
             deleteFirstProduct.click();
@@ -108,6 +79,38 @@ public class BasketPage {
             deleteFirstProduct.click();
         }
         return this;
+    }
+
+    public BasketPage deleteTelevizorProduct() {
+        deleteFirstProduct.click();
+        return this;
+    }
+
+
+    public BasketPage checkTvProductsIsDisplayed() {
+        Assert.assertTrue(tvProductText.getText().contains("Televizor"));
+        return this;
+    }
+
+
+    public BasketPage checkTastaturaProductsIsDisplayed() {
+        Assert.assertTrue(productOne.getText().contains("Tastatura"));
+        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
+        return new BasketPage(driver);
+    }
+
+    public BasketPage checkMouseProductsIsDisplayed() {
+        Assert.assertTrue(mouseText1.getText().contains("Mouse"));
+        Assert.assertTrue(mouseText2.getText().contains("Mouse"));
+        Assert.assertTrue(mouseText3.getText().contains("Mouse"));
+        return this;
+    }
+
+
+    public HomePage navigateToHomePage() {
+        driver.navigate().to("https://www.emag.ro/");
+        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
+        return new HomePage(driver);
     }
 
     public BasketPage emptyBasketValidation() {
