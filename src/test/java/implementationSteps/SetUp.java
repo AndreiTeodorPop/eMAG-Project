@@ -1,7 +1,9 @@
 package implementationSteps;
 
+import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import pageObjects.*;
 
 import java.util.concurrent.TimeUnit;
@@ -12,8 +14,9 @@ public class SetUp {
     HomePage homePage;
     SearchTastaturaPage searchTastaturaPage;
     BasketPage basketPage;
-    SearchCastiPage castiPage;
+    SearchCastiPage searchCastiPage;
     SearchTelevizoarePage searchTelevizoarePage;
+    SearchMousePage searchMousePage;
 
     public SetUp(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -25,7 +28,9 @@ public class SetUp {
         homePage = new HomePage(driver);
         searchTastaturaPage = new SearchTastaturaPage(driver);
         basketPage = new BasketPage(driver);
-        castiPage = new SearchCastiPage(driver);
+        searchCastiPage = new SearchCastiPage(driver);
         searchTelevizoarePage=new SearchTelevizoarePage(driver);
+        searchMousePage = new SearchMousePage(driver);
     }
+
 }

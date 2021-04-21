@@ -1,5 +1,6 @@
 package implementationSteps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,6 +12,14 @@ public class ImplementationSearch {
     WebDriver driver;
     SetUp setUp = new SetUp();
 
+    @After
+    public void tearDown() {
+        try {
+            driver.quit();
+        } catch (Exception ignore) { }
+        driver = null;
+    }
+
     @Given("User opens eMAG home page")
     public void userOpensEmagHomePage() {
         // setUp.driver.get("https://www.emag.ro/");
@@ -19,7 +28,7 @@ public class ImplementationSearch {
 
     @When("User searches for tastatura in search bar")
     public void userSearchesForTastaturaInSearchBar() {
-        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Tastatura");
+        setUp.searchTastaturaPage = setUp.homePage.goToSearchTastaturaPage("Tastatura");
     }
 
     @And("User selects eMAG genius products")
@@ -43,29 +52,30 @@ public class ImplementationSearch {
         setUp.basketPage.deleteProducts();
     }
 
-    @Then("User navigates to home page")
-    public void userNavigatesToHomePage() {
+    @And("User navigates to home page and quit the browser")
+    public void userNavigatesToHomePageAndQuitTheBrowser() {
         setUp.basketPage.navigateToHomePage();
+        setUp.driver.quit();
     }
 
     @When("User searches for a list of products in casti category")
     public void userSearchesForAListOfProductsInCastiCategory() {
-        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Casti");
+        setUp.searchCastiPage = setUp.homePage.goToSearchCastiPage("Casti");
     }
 
     @Then("Show a list of casti products")
     public void showAListOfCastiProducts() {
-        setUp.castiPage.checkForCastiPage();
+        setUp.searchCastiPage.checkForCastiPage();
     }
 
     @When("User filters the list based on reviews")
     public void userFiltersTheListBasedOnReviews() {
-        setUp.castiPage.filterByNrOfReviews();
+        setUp.searchCastiPage.filterByNrOfReviews();
     }
 
     @When("User writes in the search field the product name and presses on cauta button")
     public void userWritesInTheSearchFieldTheProductNameAndPressesOnCautaButton() {
-        setUp.searchTastaturaPage = setUp.homePage.searchProduct("Televizoare");
+        setUp.searchTelevizoarePage = setUp.homePage.goToSearchTelevizoarePage("Televizoare");
     }
 
     @Then("All products from televizoare are displayed")
@@ -108,7 +118,7 @@ public class ImplementationSearch {
     @When("User selects desired product to see his review")
     public void userSelectsDesiredProductToSeeHisReview() throws InterruptedException {
 //        Thread.sleep(2000);
-        setUp.castiPage.selectProductByReview();
+        setUp.searchCastiPage.selectProductByReview();
     }
 
     //
@@ -118,6 +128,38 @@ public class ImplementationSearch {
 //
     @And("Product review is displayed in console")
     public void productReviewIsDisplayedInConsole() {
-        setUp.castiPage.displayProductReview();
+        setUp.searchCastiPage.displayProductReview();
+    }
+
+    @Then("User types in the search bar mouse")
+    public void userTypesInTheSearchBarMouse() {
+        setUp.searchMousePage = setUp.homePage.goToSearchMousePage("Mouse");
+    }
+
+    @And("User sorts a list of products in ascending order")
+    public void userSortsAListOfProductsInAscendingOrder() throws InterruptedException {
+        setUp.searchMousePage.selectMouseProducts();
+        setUp.searchMousePage.selectAscendingPriceDropDown();
+    }
+
+    @When("User adds the first three products to the cart")
+    public void userAddsTheFirstThreeProductsToTheCart() {
+        setUp.searchMousePage.addProductsToCart();
+    }
+
+    @Then("The three products should be in my shopping cart")
+    public void theThreeProductsShouldBeInMyShoppingCart() {
+        setUp.basketPage = setUp.searchMousePage.goToBasketPage();
+        setUp.basketPage.checkPresenceOfMouses();
+    }
+
+    @When("User delete the products from the cart")
+    public void userDeleteTheProductsFromTheCart() {
+        setUp.basketPage.deleteMouseProducts();
+    }
+
+    @Then("The shopping cart must be empty")
+    public void theShoppingCartMustBeEmpty() {
+        setUp.basketPage.emptyBasketValidation();
     }
 }

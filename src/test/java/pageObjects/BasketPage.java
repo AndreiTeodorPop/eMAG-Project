@@ -1,10 +1,7 @@
 package pageObjects;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +25,12 @@ public class BasketPage {
     private WebElement messageEmptyShoppingBasket;
     @FindBy(xpath = "//a[@class='line-item-title main-product-title']")
     private WebElement tvProductText;
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[1]")
+    private WebElement mouseText1;
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[2]")
+    private WebElement mouseText2;
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[3]")
+    private WebElement mouseText3;
 
 
     public BasketPage(WebDriver driver) {
@@ -35,9 +38,14 @@ public class BasketPage {
         PageFactory.initElements(driver, this);
     }
 
+    public void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    }
+
+
     public void waitForVisibilityOfElementErrorMessage() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[3]/a[1]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")));
     }
 
 
@@ -72,9 +80,39 @@ public class BasketPage {
         Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
         return this;
     }
+
     public BasketPage checkPresenceOfProd() {
         Assert.assertTrue(productOne.getText().contains("Tastatura"));
         Assert.assertTrue(productTwo.getText().contains("Tastatura"));
         return new BasketPage(driver);
+    }
+    public BasketPage checkPresenceOfMouses() {
+        Assert.assertTrue(mouseText1.getText().contains("Mouse"));
+        Assert.assertTrue(mouseText2.getText().contains("Mouse"));
+        Assert.assertTrue(mouseText3.getText().contains("Mouse"));
+        return this;
+    }
+
+    public BasketPage deleteMouseProducts(){
+        try {
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deleteFirstProduct.click();
+        }catch (StaleElementReferenceException ex)
+        {
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deleteFirstProduct.click();
+        }
+        return this;
+    }
+
+    public BasketPage emptyBasketValidation(){
+        Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
+        return this;
     }
 }
