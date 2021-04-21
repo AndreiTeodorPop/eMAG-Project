@@ -79,16 +79,4 @@ public class SearchTastaturaPage {
         return new BasketPage(driver);
     }
 
-    public SearchTastaturaPage deleteProducts() {
-        try {
-            deleteFirstProduct.click();
-            Assert.assertTrue(message.isDisplayed());
-        } catch (StaleElementReferenceException ex) {
-            deleteFirstProduct.click();
-            Assert.assertTrue(message.isDisplayed());
-        }
-        return this;
-    }
-
-
 }
