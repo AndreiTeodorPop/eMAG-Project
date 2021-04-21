@@ -72,8 +72,8 @@ public class SearchTastaturaPage {
 
     public BasketPage checkPresenceOfProd() {
         cartButton.click();
-//        Assert.assertEquals(firstProduct.getText(),"Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
-//        Assert.assertEquals(secondProduct.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow");
+        Assert.assertEquals(firstProduct.getText(),"Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
+        Assert.assertEquals(secondProduct.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow");
         return new BasketPage(driver);
     }
 
