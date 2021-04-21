@@ -72,28 +72,17 @@ public class SearchTastaturaPage {
 
     public BasketPage checkPresenceOfProd() {
         cartButton.click();
-<<<<<<< Updated upstream
         Assert.assertTrue(productOne.getText().contains("Tastatura"));
         Assert.assertTrue(productTwo.getText().contains("Tastatura"));
         return new BasketPage(driver);
     }
 
-=======
-//        Assert.assertEquals(productOne.getText(),"Kit Gaming A+ EL1, 4 in 1,Tastatura, Mouse, Casti, Mousepad");
-//        Assert.assertEquals(productTwo.getText(), "Tastatura gaming mecanica A+ Seth, iluminare rainbow")
-        return this;
-    }
-
     public SearchTastaturaPage deleteProducts() {
         try {
             deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deletSecond.click();
             Assert.assertTrue(message.isDisplayed());
         } catch (StaleElementReferenceException ex) {
             deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
-            deletSecond.click();
             Assert.assertTrue(message.isDisplayed());
         }
         return this;
@@ -101,10 +90,7 @@ public class SearchTastaturaPage {
 
     public HomePage navigateToHomePage(){
         driver.navigate().to("https://www.emag.ro/");
-        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
+        Assert.assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
         return new HomePage(driver);
     }
-
-
->>>>>>> Stashed changes
 }
