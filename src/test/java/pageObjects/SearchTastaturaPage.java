@@ -74,7 +74,40 @@ public class SearchTastaturaPage {
 
     public BasketPage goToBasketPage() {
         cartButton.click();
+<<<<<<< Updated upstream
         return new BasketPage(driver);
     }
 
+=======
+        Assert.assertTrue(productOne.getText().contains("Tastatura"));
+        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
+        return new BasketPage(driver);
+    }
+
+
+
+    public SearchTastaturaPage deleteProducts() {
+        try {
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deletSecond.click();
+            Assert.assertTrue(message.isDisplayed());
+        } catch (StaleElementReferenceException ex) {
+            deleteFirstProduct.click();
+            waitForVisibilityOfElementErrorMessage();
+            deletSecond.click();
+            Assert.assertTrue(message.isDisplayed());
+        }
+        return this;
+    }
+
+    public HomePage navigateToHomePage(){
+        driver.navigate().to("https://www.emag.ro/");
+        assertEquals("https://www.emag.ro/", driver.getCurrentUrl());
+        return new HomePage(driver);
+    }
+
+
+
+>>>>>>> Stashed changes
 }
