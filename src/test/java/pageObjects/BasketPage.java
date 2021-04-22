@@ -78,6 +78,7 @@ public class BasketPage {
 
     public BasketPage deleteTelevizorProduct() {
         deleteFirstProduct.click();
+        Assert.assertTrue(messageEmptyShoppingBasket.isDisplayed());
         return this;
     }
 
