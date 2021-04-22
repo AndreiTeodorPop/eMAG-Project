@@ -88,9 +88,9 @@ public class BasketPage {
     }
 
 
-    public BasketPage checkTastaturaProductsIsDisplayed() {
-        Assert.assertTrue(productOne.getText().contains("Tastatura"));
-        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
+    public BasketPage checkTastaturaProductsIsDisplayed(String firstElement, String secondElement) {
+        Assert.assertEquals(firstElement, productOne.getText());
+        Assert.assertEquals(secondElement, productTwo.getText());
         return new BasketPage(driver);
     }
 

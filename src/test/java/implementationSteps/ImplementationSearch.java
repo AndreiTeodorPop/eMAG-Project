@@ -34,7 +34,8 @@ public class ImplementationSearch {
     @Then("User checks that the products are added to cart")
     public void userChecksThatTheProductsAreAddedToCart() {
         setUp.searchTastaturaPage.goToBasketPage();
-        setUp.basketPage.checkTastaturaProductsIsDisplayed();
+        setUp.basketPage.checkTastaturaProductsIsDisplayed(setUp.searchTastaturaPage.getFirstElement(),
+                setUp.searchTastaturaPage.getSecondElement());
     }
 
     @And("User deletes all the products from cart")

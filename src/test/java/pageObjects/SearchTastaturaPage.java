@@ -13,10 +13,16 @@ public class SearchTastaturaPage {
 
     @FindBy(xpath = "//a[text()='Livrate de eMAG ']")
     private WebElement checkEmagGenius;
+    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[2]/h2/a")
+    private WebElement productOneText;
+    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[2]/div[2]/div/div[2]/h2/a")
+    private WebElement productTwoText;
+    private String TestF = "";
+    private String TestS = "";
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[1]")
-    private WebElement firstProduct;
+    private WebElement addProductOne;
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[2]")
-    private WebElement secondProduct;
+    private WebElement addProductTwo;
     @FindBy(xpath = "//button[@class='close gtm_6046yfqs']")
     private WebElement closeSuggestions;
     @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
@@ -50,20 +56,22 @@ public class SearchTastaturaPage {
 
     public SearchTastaturaPage addElements() {
         try {
-            scrollToElement(firstProduct);
-            firstProduct.click();
-            firstProduct.getText();
+            TestF = productOneText.getText();
+            TestS = productTwoText.getText();
+            scrollToElement(addProductOne);
+            addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(secondProduct);
-            secondProduct.click();
-            secondProduct.getText();
+            scrollToElement(addProductTwo);
+            addProductTwo.click();
             closeSuggestions.click();
         } catch (StaleElementReferenceException ex) {
-            scrollToElement(firstProduct);
-            firstProduct.click();
+            TestF = productOneText.getText();
+            TestS = productTwoText.getText();
+            scrollToElement(addProductOne);
+            addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(secondProduct);
-            secondProduct.click();
+            scrollToElement(addProductTwo);
+            addProductTwo.click();
             closeSuggestions.click();
         }
         return this;
@@ -72,6 +80,14 @@ public class SearchTastaturaPage {
     public BasketPage goToBasketPage() {
         cartButton.click();
         return new BasketPage(driver);
+    }
+
+    public String getFirstElement() {
+        return this.TestF;
+    }
+
+    public String getSecondElement() {
+        return this.TestS;
     }
 
 }
