@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -64,6 +65,8 @@ public class SearchTastaturaPage {
             scrollToElement(addProductTwo);
             addProductTwo.click();
             closeSuggestions.click();
+            Assert.assertTrue(productOneText.isDisplayed());
+            Assert.assertTrue(productTwoText.isDisplayed());
         } catch (StaleElementReferenceException ex) {
             TestF = productOneText.getText();
             TestS = productTwoText.getText();
@@ -73,6 +76,8 @@ public class SearchTastaturaPage {
             scrollToElement(addProductTwo);
             addProductTwo.click();
             closeSuggestions.click();
+            Assert.assertTrue(productOneText.isDisplayed());
+            Assert.assertTrue(productTwoText.isDisplayed());
         }
         return this;
     }
