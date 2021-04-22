@@ -81,9 +81,9 @@ public class BasketPage {
         return this;
     }
 
-    public BasketPage checkPresenceOfProd() {
-        Assert.assertTrue(productOne.getText().contains("Tastatura"));
-        Assert.assertTrue(productTwo.getText().contains("Tastatura"));
+    public BasketPage checkPresenceOfProd(String firstElement, String secondElement) {
+        Assert.assertEquals(firstElement, productOne.getText());
+        Assert.assertEquals(secondElement, productTwo.getText());
         return new BasketPage(driver);
     }
     public BasketPage checkPresenceOfMouses() {
