@@ -37,5 +37,5 @@ Feature: User searches for a different types of products on eMAG website
     When User filters the list based on reviews
     And User selects desired product to see his review
     Then Show selected product page info
-    Then Product review is displayed in console
+    And Product review is displayed in console
     And User navigates to home page and quit the browser

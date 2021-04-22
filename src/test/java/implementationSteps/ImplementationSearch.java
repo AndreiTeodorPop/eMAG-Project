@@ -113,12 +113,12 @@ public class ImplementationSearch {
         setUp.searchCastiPage.checkForFirstCastiProductPage();
     }
 
-    @Then("Product review is displayed in console")
+    @And("Product review is displayed in console")
     public void productReviewIsDisplayedInConsole() {
         setUp.searchCastiPage.displayProductReview();
     }
 
-    @Then("User types in the search bar mouse")
+    @And("User types in the search bar mouse")
     public void userTypesInTheSearchBarMouse() {
         setUp.searchMousePage = setUp.homePage.goToSearchMousePage("Mouse");
     }
