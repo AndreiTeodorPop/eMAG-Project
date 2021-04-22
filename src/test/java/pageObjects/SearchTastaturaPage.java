@@ -1,25 +1,43 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * Created by diana on 20 Apr 2021
+ */
 
 public class SearchTastaturaPage {
     WebDriver driver;
 
     @FindBy(xpath = "//a[text()='Livrate de eMAG ']")
     private WebElement checkEmagGenius;
+    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[2]/h2/a")
+    private WebElement productOneText;
+    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[2]/div[2]/div/div[2]/h2/a")
+    private WebElement productTwoText;
+    private String TestF = "";
+    private String TestS = "";
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[1]")
-    private WebElement firstProduct;
+    private WebElement addProductOne;
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[2]")
-    private WebElement secondProduct;
+    private WebElement addProductTwo;
     @FindBy(xpath = "//button[@class='close gtm_6046yfqs']")
     private WebElement closeSuggestions;
+    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
+    private WebElement productOne;
+    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
+    private WebElement productTwo;
+    @FindBy(id = "my_cart")
+    private WebElement cartButton;
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
+    private WebElement deleteFirstProduct;
+    @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
+    private WebElement deleteSecond;
+    @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
+    private WebElement message;
+
 
     public SearchTastaturaPage(WebDriver driver) {
         this.driver = driver;
@@ -36,34 +54,40 @@ public class SearchTastaturaPage {
         return this;
     }
 
-    public void waitForVisibilityOfElementErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[3]/div[3]/form/button")));
-    }
-
-
     public SearchTastaturaPage addElements() {
         try {
-            scrollToElement(firstProduct);
-            firstProduct.click();
+            TestF = productOneText.getText();
+            TestS = productTwoText.getText();
+            scrollToElement(addProductOne);
+            addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(secondProduct);
-            secondProduct.click();
+            scrollToElement(addProductTwo);
+            addProductTwo.click();
             closeSuggestions.click();
-        } catch (org.openqa.selenium.StaleElementReferenceException ex) {
-            scrollToElement(firstProduct);
-            firstProduct.click();
+        } catch (StaleElementReferenceException ex) {
+            TestF = productOneText.getText();
+            TestS = productTwoText.getText();
+            scrollToElement(addProductOne);
+            addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(secondProduct);
-            secondProduct.click();
+            scrollToElement(addProductTwo);
+            addProductTwo.click();
             closeSuggestions.click();
         }
         return this;
     }
-    public SearchTastaturaPage addSecondElement(){
-        scrollToElement(secondProduct);
-        secondProduct.click();
-        closeSuggestions.click();
-        return this;
+
+    public BasketPage goToBasketPage() {
+        cartButton.click();
+        return new BasketPage(driver);
     }
+
+    public String getFirstElement() {
+        return this.TestF;
+    }
+
+    public String getSecondElement() {
+        return this.TestS;
+    }
+
 }

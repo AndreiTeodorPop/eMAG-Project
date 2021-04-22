@@ -39,11 +39,30 @@ public class HomePage {
         getCloseEmagGeniusAdd().click();
     }
 
-    public SearchTastaturaPage searchProduct(String product){
+    public SearchTastaturaPage goToSearchTastaturaPage(String product){
         searchBar.clear();
         searchBar.sendKeys(product);
         searchButton.click();
         return new SearchTastaturaPage(driver);
+    }
+
+    public SearchMousePage goToSearchMousePage(String product){
+        searchBar.clear();
+        searchBar.sendKeys(product);
+        searchButton.click();
+        return new SearchMousePage(driver);
+    }
+    public SearchCastiPage goToSearchCastiPage(String product){
+        searchBar.clear();
+        searchBar.sendKeys(product);
+        searchButton.click();
+        return new SearchCastiPage(driver);
+    }
+    public SearchTelevizoarePage goToSearchTelevizoarePage(String product){
+        searchBar.clear();
+        searchBar.sendKeys(product);
+        searchButton.click();
+        return new SearchTelevizoarePage(driver);
     }
 
     public HomePage validationHomePage(){
@@ -51,4 +70,5 @@ public class HomePage {
        // assertEquals(driver.getTitle(), "eMAG.ro - Libertate în fiecare zi");
         return this;
     }
+
 }
