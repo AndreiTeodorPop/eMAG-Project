@@ -53,6 +53,7 @@ public class SearchCastiPage {
     }
 
     public SearchCastiPage filterByNrOfReviews() {
+        scrollToElement(dropDownOrderByReviews);
         dropDown.click();
         dropDownOrderByReviews.click();
         productName = firstCastiProduct.getText();
