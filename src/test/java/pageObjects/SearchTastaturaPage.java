@@ -9,25 +9,27 @@ import org.openqa.selenium.support.PageFactory;
  */
 
 public class SearchTastaturaPage {
+
     WebDriver driver;
+
+    private String FirstProductText;
+    private String SecondProductText;
 
     @FindBy(xpath = "//a[text()='Livrate de eMAG ']")
     private WebElement checkEmagGenius;
-    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[1]/div[2]/div/div[2]/h2/a")
+    @FindBy(xpath = "(//a[@data-zone='title'])[1]")
     private WebElement productOneText;
-    @FindBy(xpath = "//*[@id=\"card_grid\"]/div[2]/div[2]/div/div[2]/h2/a")
+    @FindBy(xpath = "(//a[@data-zone='title'])[2]")
     private WebElement productTwoText;
-    private String TestF = "";
-    private String TestS = "";
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[1]")
     private WebElement addProductOne;
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-primary btn-emag yeahIWantThisProduct'])[2]")
     private WebElement addProductTwo;
     @FindBy(xpath = "//button[@class='close gtm_6046yfqs']")
     private WebElement closeSuggestions;
-    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[1]")
     private WebElement productOne;
-    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[2]")
     private WebElement productTwo;
     @FindBy(id = "my_cart")
     private WebElement cartButton;
@@ -35,42 +37,46 @@ public class SearchTastaturaPage {
     private WebElement deleteFirstProduct;
     @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
     private WebElement deleteSecond;
-    @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
+    @FindBy(xpath = "//div[text()='Cosul tau este gol']")
     private WebElement message;
-
 
     public SearchTastaturaPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    public String getFirstProductText() {
+        return FirstProductText;
+    }
+
+    public String getSecondProductText() {
+        return SecondProductText;
+    }
+
+    public WebElement getAddProductOne() {
+        return addProductOne;
+    }
+
+    public WebElement getCheckEmagGenius() {
+        return checkEmagGenius;
     }
 
     public SearchTastaturaPage selectEmagGenius() {
-        scrollToElement(checkEmagGenius);
         checkEmagGenius.click();
         return this;
     }
 
     public SearchTastaturaPage addElements() {
+        FirstProductText = productOneText.getText();
+        SecondProductText = productTwoText.getText();
         try {
-            TestF = productOneText.getText();
-            TestS = productTwoText.getText();
-            scrollToElement(addProductOne);
             addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(addProductTwo);
             addProductTwo.click();
             closeSuggestions.click();
         } catch (StaleElementReferenceException ex) {
-            TestF = productOneText.getText();
-            TestS = productTwoText.getText();
-            scrollToElement(addProductOne);
             addProductOne.click();
             closeSuggestions.click();
-            scrollToElement(addProductTwo);
             addProductTwo.click();
             closeSuggestions.click();
         }
@@ -81,13 +87,4 @@ public class SearchTastaturaPage {
         cartButton.click();
         return new BasketPage(driver);
     }
-
-    public String getFirstElement() {
-        return this.TestF;
-    }
-
-    public String getSecondElement() {
-        return this.TestS;
-    }
-
 }

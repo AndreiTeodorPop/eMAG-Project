@@ -1,5 +1,6 @@
 package pageObjects;
 
+import implementationSteps.Helper;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -13,15 +14,15 @@ public class BasketPage {
 
     WebDriver driver;
 
-    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[1]/div/div[2]/div[1]/div[1]/a")
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[1]")
     private WebElement productOne;
-    @FindBy(xpath = "//*[@id=\"vendorsContainer\"]/div/div[2]/div/div[2]/div[1]/div[1]/a")
+    @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[2]")
     private WebElement productTwo;
     @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")
     private WebElement deleteFirstProduct;
     @FindBy(xpath = "(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[2]")
     private WebElement deleteSecondProduct;
-    @FindBy(xpath = "//*[@id=\"empty-cart\"]/div[1]")
+    @FindBy(xpath = "//div[text()='Cosul tau este gol']")
     private WebElement messageEmptyShoppingBasket;
     @FindBy(xpath = "//a[@class='line-item-title main-product-title']")
     private WebElement tvProductText;
@@ -38,41 +39,35 @@ public class BasketPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    public WebElement getDeleteFirstProduct(){
+        return deleteFirstProduct;
     }
-
-
-    public void waitForVisibilityOfElementErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[@class ='emg-right remove-product btn-remove-product gtm_rp080219'])[1]")));
-    }
-
 
     public BasketPage deleteTastaturaProducts() {
         try {
             deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
             deleteSecondProduct.click();
             Assert.assertTrue(messageEmptyShoppingBasket.isDisplayed());
         } catch (StaleElementReferenceException ex) {
             deleteFirstProduct.click();
-            waitForVisibilityOfElementErrorMessage();
             deleteSecondProduct.click();
             Assert.assertTrue(messageEmptyShoppingBasket.isDisplayed());
         }
         return this;
     }
 
+    public BasketPage deleteProduct() {
+        driver.navigate().refresh();
+        deleteFirstProduct.click();
+        return this;
+    }
+
     public BasketPage deleteMouseProducts() {
         deleteFirstProduct.click();
-        //waitForVisibilityOfElementErrorMessage();
-        driver.navigate().refresh();
-        deleteFirstProduct.click();
-        //waitForVisibilityOfElementErrorMessage();
         driver.navigate().refresh();
         deleteFirstProduct.click();
         driver.navigate().refresh();
+        deleteFirstProduct.click();
         return this;
     }
 
@@ -80,7 +75,6 @@ public class BasketPage {
         deleteFirstProduct.click();
         return this;
     }
-
 
     public BasketPage checkTvProductsIsDisplayed() {
         Assert.assertTrue(tvProductText.getText().contains("Televizor"));
@@ -91,16 +85,19 @@ public class BasketPage {
     public BasketPage checkTastaturaProductsIsDisplayed(String firstElement, String secondElement) {
         Assert.assertEquals(firstElement, productOne.getText());
         Assert.assertEquals(secondElement, productTwo.getText());
-        return new BasketPage(driver);
-    }
-
-    public BasketPage checkMouseProductsIsDisplayed() {
-        Assert.assertTrue(mouseText1.getText().contains("Mouse"));
-        Assert.assertTrue(mouseText2.getText().contains("Mouse"));
-        Assert.assertTrue(mouseText3.getText().contains("Mouse"));
         return this;
     }
 
+    public BasketPage checkMouseProductsIsDisplayed(String mouse1StrText, String mouse2StrText, String mouse3StrText) {
+        System.out.println();
+        System.out.println(mouseText1.getText());
+        System.out.println(mouseText2.getText());
+        System.out.println(mouseText3.getText());
+        Assert.assertEquals(mouse1StrText, mouseText1.getText());
+        Assert.assertEquals(mouse2StrText, mouseText2.getText());
+        Assert.assertEquals(mouse3StrText, mouseText3.getText());
+        return this;
+    }
 
     public HomePage navigateToHomePage() {
         driver.navigate().to("https://www.emag.ro/");
@@ -109,7 +106,7 @@ public class BasketPage {
     }
 
     public BasketPage emptyBasketValidation() {
-        Assert.assertEquals(messageEmptyShoppingBasket.getText(), "Cosul tau este gol");
+        Assert.assertEquals("Cosul tau este gol", messageEmptyShoppingBasket.getText());
         return this;
     }
 }

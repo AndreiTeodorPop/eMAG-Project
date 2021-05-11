@@ -13,11 +13,6 @@ import static org.junit.Assert.assertTrue;
 public class SearchTelevizoarePage {
     WebDriver driver;
 
-    public SearchTelevizoarePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(id = "card_grid")
     private WebElement listOfTvDisplayed;
     @FindBy(xpath = "//a[@class='js-filter-item filter-item' and @data-name='Resigilate']")
@@ -30,14 +25,28 @@ public class SearchTelevizoarePage {
     private WebElement closeSugestion;
     @FindBy(id = "my_cart")
     private WebElement shoppingBasketButton;
+    @FindBy(xpath = "//div[@class='menu-container']")
+    private WebElement meniuDeSelectie;
 
-    public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    public SearchTelevizoarePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void waitForVisibilityOfElement() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='menu-container']")));
+    public WebElement getMeniuDeSelectie(){
+        return meniuDeSelectie;
+    }
+
+    public WebElement getCumparaResigilatButton(){
+        return cumparaResigilatButton;
+    }
+
+    public WebElement getFilterResigilate(){
+        return filterResigilate;
+    }
+
+    public WebElement getVarianteDiagonalaDisplayed(){
+        return varianteDiagonalaDisplayed;
     }
 
     public SearchTelevizoarePage productsTvAreDisplayed() {
@@ -50,7 +59,6 @@ public class SearchTelevizoarePage {
     }
 
     public SearchTelevizoarePage filterTvFromDisponibilitate() {
-        scrollToElement(filterResigilate);
         filterResigilate.click();
         return this;
     }
@@ -65,7 +73,6 @@ public class SearchTelevizoarePage {
     }
 
     public SearchTelevizoarePage addToShoppingBasket() {
-        scrollToElement(cumparaResigilatButton);
         cumparaResigilatButton.click();
         closeSugestion.click();
         return this;
@@ -75,5 +82,4 @@ public class SearchTelevizoarePage {
         shoppingBasketButton.click();
         return new BasketPage(driver);
     }
-
 }

@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.HomePage;
-import pageObjects.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +12,6 @@ public class Test {
     WebDriver driver;
 
     HomePage obj_HomePage;
-    LoginPage obj_LoginPage;
 
     @Before
     public void setup() {
@@ -27,8 +25,6 @@ public class Test {
     }
 
     @org.junit.Test
-    public void Test() {
-        obj_HomePage = new HomePage(driver);
-        obj_HomePage.validationHomePage();
+    public void Test1() {
     }
 }

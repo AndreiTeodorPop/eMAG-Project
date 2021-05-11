@@ -38,8 +38,12 @@ public class SearchCastiPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    public WebElement getDropDownOrderByReviews(){
+        return dropDownOrderByReviews;
+    }
+
+    public WebElement getProductReviewButton(){
+        return productReviewButton;
     }
 
     public SearchCastiPage checkForCastiPage() {
@@ -53,7 +57,6 @@ public class SearchCastiPage {
     }
 
     public SearchCastiPage filterByNrOfReviews() {
-        scrollToElement(dropDownOrderByReviews);
         dropDown.click();
         dropDownOrderByReviews.click();
         productName = firstCastiProduct.getText();
@@ -62,10 +65,8 @@ public class SearchCastiPage {
 
     public SearchCastiPage selectProductByReview() {
         try {
-            scrollToElement(productReviewButton);
             productReviewButton.click();
         } catch (StaleElementReferenceException ex) {
-            scrollToElement(productReviewButton);
             productReviewButton.click();
         }
         return this;
