@@ -6,13 +6,16 @@ import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"Cases"}, glue = {"StepsToTest"})
 
 public class ImplementationSearchTastatura {
 
-    SetUp setUp = new SetUp();
+
+    WebDriver driver;
+    SetUp setUp = new SetUp(driver);
 
     @When("^User searches for (.*) in search bar$")
     public void userSearchesForProductInSearchBar(String product) {

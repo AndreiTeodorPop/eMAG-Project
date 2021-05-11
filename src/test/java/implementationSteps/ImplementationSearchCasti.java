@@ -3,10 +3,12 @@ package implementationSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 
 public class ImplementationSearchCasti {
 
-    SetUp setUp = new SetUp();
+    WebDriver driver;
+    SetUp setUp = new SetUp(driver);
 
     @Then("Show a list of casti products")
     public void showAListOfCastiProducts() {

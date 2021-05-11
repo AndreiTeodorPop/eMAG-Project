@@ -5,13 +5,14 @@ import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-
-@RunWith(Cucumber.class)
-@CucumberOptions(features = {"Cases"}, glue = {"StepsToTest"})
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class Parametrization {
 
-    SetUp setUp = new SetUp();
+
+    WebDriver driver;
+    SetUp setUp;
 
     @And("^User types (.*) in the search bar$")
     public void userTypesProductInTheSearchBar(String product) throws Throwable{

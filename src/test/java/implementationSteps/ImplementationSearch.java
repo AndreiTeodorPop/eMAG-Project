@@ -4,18 +4,24 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class ImplementationSearch {
 
-    SetUp setUp = new SetUp();
+
+    WebDriver driver;
+    SetUp setUp;
 
     //Commnon methods
 
     @Given("User opens eMAG home page")
-    public void userOpensEmagHomePage() throws Throwable {
+    public void userOpensEmagHomePage(){
+        SetUp setUp = new SetUp(driver);
+        setUp.mySetUp();
         setUp.logger.configure();
-        // setUp.driver.get("https://www.emag.ro/");
         setUp.homePage.validationHomePage();
+//        driver.findElement(By.id("searchboxTrigger")).sendKeys("tastatura");
     }
 
     @And("User navigates to home page and quit the browser")

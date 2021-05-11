@@ -106,6 +106,7 @@ public class BasketPage {
     }
 
     public BasketPage emptyBasketValidation() {
+        System.out.println(messageEmptyShoppingBasket.getText());
         Assert.assertEquals("Cosul tau este gol", messageEmptyShoppingBasket.getText());
         return this;
     }

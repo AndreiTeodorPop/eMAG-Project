@@ -24,7 +24,11 @@ public class SetUp {
     Constants constants;
     Log4j logger;
 
-    public SetUp() {
+    public SetUp(WebDriver driver){
+        this.driver=driver;
+    }
+
+    public void mySetUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.emag.ro/homepage");
