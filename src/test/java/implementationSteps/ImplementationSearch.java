@@ -11,106 +11,108 @@ public class ImplementationSearch {
 
 
     WebDriver driver;
-    SetUp setUp;
+    SetUp setUp = new SetUp();
 
     //Commnon methods
 
-    @Given("User opens eMAG home page")
+    @Given("^User opens eMAG home page$")
     public void userOpensEmagHomePage(){
-        SetUp setUp = new SetUp(driver);
-        setUp.mySetUp();
+        //setUp.mySetUp();
         setUp.logger.configure();
         setUp.homePage.validationHomePage();
 //        driver.findElement(By.id("searchboxTrigger")).sendKeys("tastatura");
     }
 
-    @And("User navigates to home page and quit the browser")
+    @And("^User navigates to home page and quit the browser$")
     public void userNavigatesToHomePageAndQuitTheBrowser() {
         setUp.logger.resetConfiguration();
         setUp.basketPage.navigateToHomePage();
-        setUp.driver.quit();
+//        setUp.driver.quit();
     }
 
-    @Then("The shopping cart must be empty")
+    @Then("^The shopping cart must be empty$")
     public void theShoppingCartMustBeEmpty() {
         setUp.basketPage.emptyBasketValidation();
     }
 
  //Scenario nr. 1
-//
-//    @When("User searches for Product in search bar")
-//    public void userSearchesForProductInSearchBar() {
-//        setUp.logger.logger.info("Now running scenario nr.1");
-//        setUp.searchTastaturaPage = setUp.homePage.goToSearchTastaturaPage(setUp.constants.getTastaturiTextForSearch());
-//    }
 
-//
-//    @When("^User searches for \"(.*)\" in search bar$")
-//    public void userSearchesForInSearchBar(String Product) throws Throwable{
-//        setUp.logger.logger.info("Now running scenario nr.1");
-//        setUp.searchTastaturaPage = setUp.homePage.goToSearchTastaturaPage(Product);
-//    }
-//
-//    @And("User selects eMAG genius products")
-//    public void userSelectsEMAGGeniusProducts() {
-//        setUp.helper.scrollToElement(setUp.searchTastaturaPage.getCheckEmagGenius());
-//        setUp.searchTastaturaPage.selectEmagGenius();
-//    }
-//
-//    @Then("User adds products to cart")
-//    public void userAddsProductsToCart() {
-//        setUp.helper.scrollToElement(setUp.searchTastaturaPage.getAddProductOne());
-//        setUp.searchTastaturaPage.addElements();
-//    }
-//
-//    @Then("User checks that the products are added to cart")
-//    public void userChecksThatTheProductsAreAddedToCart() {
-//        setUp.searchTastaturaPage.goToBasketPage();
-//        setUp.basketPage.checkTastaturaProductsIsDisplayed(setUp.searchTastaturaPage.getFirstProductText(), setUp.searchTastaturaPage.getSecondProductText());
-//        System.out.println(setUp.searchTastaturaPage.getFirstProductText());
-//        System.out.println(setUp.searchTastaturaPage.getSecondProductText());
-//    }
-//
-//    @And("User deletes all the products from cart")
-//    public void userDeletesAllTheProductsFromCart() {
-//        setUp.helper.waitVisibility10seconds(setUp.basketPage.getDeleteFirstProduct());
-//        setUp.basketPage.deleteTastaturaProducts();
-//    }
+    @When("User searches for Product in search bar")
+    public void userSearchesForProductInSearchBar() {
+        setUp.logger.logger.info("Now running scenario nr.1");
+        setUp.homePage.writeOnSearchBox(setUp.constants.getTastaturiTextForSearch());
+        setUp.searchTastaturaPage = setUp.homePage.goToSearchTastaturaPage();
+    }
+
+
+    @When("^User searches for (.*) in search bar$")
+    public void userSearchesForInSearchBar(String Product) throws Throwable{
+        setUp.logger.logger.info("Now running scenario nr.1");
+        setUp.homePage.writeOnSearchBox(Product);
+        setUp.searchTastaturaPage = setUp.homePage.goToSearchTastaturaPage();
+    }
+
+    @And("User selects eMAG genius products")
+    public void userSelectsEMAGGeniusProducts() {
+        setUp.helper.scrollToElement(setUp.searchTastaturaPage.getCheckEmagGenius());
+        setUp.searchTastaturaPage.selectEmagGenius();
+    }
+
+    @Then("User adds products to cart")
+    public void userAddsProductsToCart() {
+        setUp.helper.scrollToElement(setUp.searchTastaturaPage.getAddProductOne());
+        setUp.searchTastaturaPage.addElements();
+    }
+
+    @Then("User checks that the products are added to cart")
+    public void userChecksThatTheProductsAreAddedToCart() {
+        setUp.searchTastaturaPage.goToBasketPage();
+        setUp.basketPage.checkTastaturaProductsIsDisplayed(setUp.searchTastaturaPage.getFirstProductText(), setUp.searchTastaturaPage.getSecondProductText());
+        System.out.println(setUp.searchTastaturaPage.getFirstProductText());
+        System.out.println(setUp.searchTastaturaPage.getSecondProductText());
+    }
+
+    @And("User deletes all the products from cart")
+    public void userDeletesAllTheProductsFromCart() {
+        setUp.helper.waitVisibility10seconds(setUp.basketPage.getDeleteFirstProduct());
+        setUp.basketPage.deleteTastaturaProducts();
+    }
 
 //Scenario nr. 2
 
-//    @When("User searches for a list of products in casti category")
-//    public void userSearchesForAListOfProductsInCastiCategory() {
-//        setUp.logger.logger.info("Now running scenario nr.2");
-//        setUp.searchCastiPage = setUp.homePage.goToSearchCastiPage(setUp.constants.getCastiTextForSearch());
-//    }
-//
-//    @Then("Show a list of casti products")
-//    public void showAListOfCastiProducts() {
-//        setUp.searchCastiPage.checkForCastiPage();
-//    }
-//
-//    @When("User filters the list based on reviews")
-//    public void userFiltersTheListBasedOnReviews() {
-//        setUp.helper.scrollToElement(setUp.searchCastiPage.getDropDownOrderByReviews());
-//        setUp.searchCastiPage.filterByNrOfReviews();
-//    }
-//
-//    @And("User selects desired product to see his review")
-//    public void userSelectsDesiredProductToSeeHisReview() {
-//        setUp.helper.scrollToElement(setUp.searchCastiPage.getProductReviewButton());
-//        setUp.searchCastiPage.selectProductByReview();
-//    }
-//
-//    @Then("Show selected product page info")
-//    public void showSelectedProductPageInfo() {
-//        setUp.searchCastiPage.checkForFirstCastiProductPage();
-//    }
-//
-//    @And("Product review is displayed in console")
-//    public void productReviewIsDisplayedInConsole() {
-//        setUp.searchCastiPage.displayProductReview();
-//    }
+    @When("User searches for a list of products in casti category")
+    public void userSearchesForAListOfProductsInCastiCategory() {
+        setUp.logger.logger.info("Now running scenario nr.2");
+        setUp.homePage.writeOnSearchBox(setUp.constants.getCastiTextForSearch());
+        setUp.searchCastiPage = setUp.homePage.goToSearchCastiPage();
+    }
+
+    @Then("Show a list of casti products")
+    public void showAListOfCastiProducts() {
+        setUp.searchCastiPage.checkForCastiPage();
+    }
+
+    @When("User filters the list based on reviews")
+    public void userFiltersTheListBasedOnReviews() {
+        setUp.helper.scrollToElement(setUp.searchCastiPage.getDropDownOrderByReviews());
+        setUp.searchCastiPage.filterByNrOfReviews();
+    }
+
+    @And("User selects desired product to see his review")
+    public void userSelectsDesiredProductToSeeHisReview() {
+        setUp.helper.scrollToElement(setUp.searchCastiPage.getProductReviewButton());
+        setUp.searchCastiPage.selectProductByReview();
+    }
+
+    @Then("Show selected product page info")
+    public void showSelectedProductPageInfo() {
+        setUp.searchCastiPage.checkForFirstCastiProductPage();
+    }
+
+    @And("Product review is displayed in console")
+    public void productReviewIsDisplayedInConsole() {
+        setUp.searchCastiPage.displayProductReview();
+    }
 
  //   Scenario nr. 3
 
@@ -160,7 +162,8 @@ public class ImplementationSearch {
     @And("User types in the search bar mouse")
     public void userTypesInTheSearchBarMouse() {
         setUp.logger.logger.info("Now running scenario nr.4");
-        //setUp.searchMousePage = setUp.homePage.goToSearchMousePage(setUp.constants.getMouseTextForSearch());
+        setUp.homePage.writeOnSearchBox(setUp.constants.getMouseTextForSearch());
+        setUp.searchMousePage = setUp.homePage.goToSearchMousePage();
     }
 
     @And("User sorts a list of products in ascending order")
@@ -187,4 +190,26 @@ public class ImplementationSearch {
         setUp.basketPage.deleteMouseProducts();
     }
 
+    //Parametrization
+
+    @And("^User types (.*) in the search bar$")
+    public void userTypesProductInTheSearchBar(String product) throws Throwable{
+        setUp.homePage.writeOnSearchBox(product);
+        setUp.homePage.clickOnSearchButton();
+    }
+
+    @And("User adds the first two products to the cart")
+    public void userAddsTheFirstTwoProductsToTheCart() {
+        setUp.helper.scrollToElement(setUp.homePage.getAddToCartProduct1());
+        setUp.homePage.addProductsToCart();
+    }
+
+    @When("User delete all products from the cart")
+    public void userDeleteAllProductsFromTheCart() {
+        setUp.basketPage = setUp.homePage.goToBasketPage();
+        setUp.helper.scrollToElement(setUp.basketPage.getDeleteFirstProduct());
+        setUp.basketPage.deleteProduct();
+        setUp.helper.scrollToElement(setUp.basketPage.getDeleteFirstProduct());
+        setUp.basketPage.deleteProduct();
+    }
 }

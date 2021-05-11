@@ -24,26 +24,27 @@ public class SetUp {
     Constants constants;
     Log4j logger;
 
-    public SetUp(WebDriver driver){
-        this.driver=driver;
-    }
+//    public SetUp(WebDriver driver){
+//        this.driver=driver;
+//    }
 
-    public void mySetUp() {
+
+    public SetUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://www.emag.ro/homepage");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        homePage = new HomePage(driver);
-        searchTastaturaPage = new SearchTastaturaPage(driver);
-        basketPage = new BasketPage(driver);
-        searchCastiPage = new SearchCastiPage(driver);
-        searchTelevizoarePage = new SearchTelevizoarePage(driver);
-        searchMousePage = new SearchMousePage(driver);
-        helper = new Helper(driver);
-        constants = new Constants(driver);
-        logger = new Log4j(driver);
+        this.driver = new ChromeDriver();
+        this.driver.get("https://www.emag.ro/homepage");
+        this.driver.manage().window().maximize();
+        this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        homePage = new HomePage(this.driver);
+        searchTastaturaPage = new SearchTastaturaPage(this.driver);
+        basketPage = new BasketPage(this.driver);
+        searchCastiPage = new SearchCastiPage(this.driver);
+        searchTelevizoarePage = new SearchTelevizoarePage(this.driver);
+        searchMousePage = new SearchMousePage(this.driver);
+        helper = new Helper(this.driver);
+        constants = new Constants(this.driver);
+        logger = new Log4j(this.driver);
     }
 //
 //    @Before
