@@ -119,7 +119,8 @@ public class ImplementationSearch {
     @When("User writes in the search field the product name and presses on cauta button")
     public void userWritesInTheSearchFieldTheProductNameAndPressesOnCautaButton() {
         setUp.logger.logger.info("Now running scenario nr.3");
-        //setUp.searchTelevizoarePage = setUp.homePage.goToSearchTelevizoarePage(setUp.constants.getTelevizoareTextForSearch());
+        setUp.homePage.writeOnSearchBox(setUp.constants.getTelevizoareTextForSearch());
+        setUp.searchTelevizoarePage = setUp.homePage.goToSearchTelevizoarePage();
     }
 
     @Then("All products from televizoare are displayed")
