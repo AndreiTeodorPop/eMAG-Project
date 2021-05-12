@@ -81,10 +81,10 @@ public class ImplementationSearch {
 
 //Scenario nr. 2
 
-    @When("User searches for a list of products in casti category")
-    public void userSearchesForAListOfProductsInCastiCategory() {
+    @When("^User searches for (.*) in search box$")
+    public void userSearchesForAListOfProductsInCastiCategory(String product) {
         setUp.logger.logger.info("Now running scenario nr.2");
-        setUp.homePage.writeOnSearchBox(setUp.constants.getCastiTextForSearch());
+        setUp.homePage.writeOnSearchBox(product);
         setUp.searchCastiPage = setUp.homePage.goToSearchCastiPage();
     }
 

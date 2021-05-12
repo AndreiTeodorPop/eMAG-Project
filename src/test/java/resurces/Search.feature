@@ -9,10 +9,10 @@ Feature: User searches for a different types of products on eMAG website
     And User navigates to home page and quit the browser
     Examples:
       |product|
-      |tastatura|
-#      |mouse|
-#      |televizoare|
-#      |casti|
+      |iphone 12 pro|
+      |bicicleta|
+      |snowboard|
+      |airmax|
 
   Scenario Outline: User is on Home Page and searches for a list of products
     Given User opens eMAG home page
@@ -24,18 +24,22 @@ Feature: User searches for a different types of products on eMAG website
     And User navigates to home page and quit the browser
     Examples:
       |product|
-      |tastatura|
+      |iphone 12|
+      |samsung galaxy|
 
-  Scenario: Sort a list of products in order to get the one with the most reviews
+  Scenario Outline: Sort a list of products in order to get the one with the most reviews
     Given User opens eMAG home page
-    When User searches for casti in search bar
+    When User searches for <product> in search box
     Then Show a list of casti products
     When User filters the list based on reviews
     And User selects desired product to see his review
     Then Show selected product page info
     And Product review is displayed in console
     And User navigates to home page and quit the browser
-
+    Examples:
+    |product|
+    |casti|
+    |Iphone 12 neverlock|
 
   Scenario: User searches a product from Televizoare Resigilate
     Given User opens eMAG home page
