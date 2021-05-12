@@ -1,18 +1,24 @@
 package pageObjects;
 
+import implementationSteps.Helper;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static org.junit.Assert.assertEquals;
 
 @Getter
-public class HomePage {
+public class HomePage extends LoadableComponent<HomePage> {
 
     WebDriver driver;
+    Helper helper;
+
+    String baseURL = "https://www.emag.ro/";
 
     @FindBy(id = "my_account")
     private WebElement myAccountButton;
@@ -103,4 +109,13 @@ public class HomePage {
         return this;
     }
 
+    @Override
+    public void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    public void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
+    }
 }

@@ -1,14 +1,17 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.ArrayList;
 
-public class SearchMousePage {
+public class SearchMousePage extends LoadableComponent<SearchMousePage> {
 
     WebDriver driver;
+    String baseURL = "https://www.emag.ro/search/mouse?ref=effective_search";
 
     String product1StrText;
     String product2StrText;
@@ -80,6 +83,16 @@ public class SearchMousePage {
         return product3Text.getText();
     }
 
+    //@Override
+//    public void isLoaded() throws Error
+//    {
+//        System.out.println("Calling isLoaded()...");
+//        String url = driver.getCurrentUrl();
+//        Assert.assertTrue(url.endsWith("account/signIn"));
+//        WebElement h1 = driver.findElement(By.xpath("//span[@data-label='SIGN_IN']"));
+//        Assert.assertTrue(h1.getText().equals("THIS SHOULD REALLY FAIL"));
+//    }
+
     public SearchMousePage selectMouseProducts() {
         mouseProducts.click();
         return this;
@@ -133,5 +146,15 @@ public class SearchMousePage {
     public BasketPage goToBasketPage() {
         shoppingBasketButton.click();
         return new BasketPage(driver);
+    }
+
+    @Override
+    public void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    public void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
     }
 }

@@ -1,17 +1,22 @@
 package pageObjects;
 
+import io.cucumber.java.eo.Se;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class SearchTelevizoarePage {
+public class SearchTelevizoarePage extends LoadableComponent<SearchTelevizoarePage> {
+
     WebDriver driver;
+    String baseURL = "https://www.emag.ro/search/televizoare?ref=effective_search";
 
     @FindBy(id = "card_grid")
     private WebElement listOfTvDisplayed;
@@ -81,5 +86,15 @@ public class SearchTelevizoarePage {
     public BasketPage goToBasketPage() {
         shoppingBasketButton.click();
         return new BasketPage(driver);
+    }
+
+    @Override
+    public void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    public void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
     }
 }

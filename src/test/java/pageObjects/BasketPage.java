@@ -6,13 +6,15 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 
-public class BasketPage {
+public class BasketPage extends LoadableComponent<BasketPage>{
 
     WebDriver driver;
+    String baseURL = "https://www.emag.ro/cart/products?ref=cart";
 
     @FindBy(xpath = "(//a[@class='line-item-title main-product-title'])[1]")
     private WebElement productOne;
@@ -64,9 +66,13 @@ public class BasketPage {
 
     public BasketPage deleteMouseProducts() {
         deleteFirstProduct.click();
-        driver.navigate().refresh();
+        load();
+        isLoaded();
+//        driver.navigate().refresh();
         deleteFirstProduct.click();
-        driver.navigate().refresh();
+        load();
+        isLoaded();
+//        driver.navigate().refresh();
         deleteFirstProduct.click();
         return this;
     }
@@ -109,5 +115,15 @@ public class BasketPage {
         System.out.println(messageEmptyShoppingBasket.getText());
         Assert.assertEquals("Cosul tau este gol", messageEmptyShoppingBasket.getText());
         return this;
+    }
+
+    @Override
+    protected void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.StringTokenizer;
 
@@ -12,9 +13,10 @@ import java.util.StringTokenizer;
  * Created by atpop on 20 Apr 2021
  */
 
-public class SearchCastiPage {
+public class SearchCastiPage extends LoadableComponent<SearchCastiPage> {
 
     WebDriver driver;
+    String baseURL = "https://www.emag.ro/search/casti?ref=effective_search";
 
     @FindBy(xpath = "//title[text()='Cauți Casti? Alege din oferta eMAG.ro']")
     private WebElement castiPageTitle;
@@ -80,5 +82,15 @@ public class SearchCastiPage {
             System.out.println(tokenizer.nextToken());
         }
         System.out.println("----------------" + productReviewNote.getText() + "----------------");
+    }
+
+    @Override
+    public void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    public void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
     }
 }

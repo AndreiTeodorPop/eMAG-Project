@@ -20,6 +20,7 @@ public class ImplementationSearch {
         //setUp.mySetUp();
         setUp.logger.configure();
         setUp.homePage.validationHomePage();
+        setUp.homePage.isLoaded();
 //        driver.findElement(By.id("searchboxTrigger")).sendKeys("tastatura");
     }
 
@@ -169,6 +170,8 @@ public class ImplementationSearch {
 
     @And("User sorts a list of products in ascending order")
     public void userSortsAListOfProductsInAscendingOrder() {
+        setUp.searchMousePage.load();
+        setUp.searchMousePage.isLoaded();
         setUp.searchMousePage.selectMouseProducts();
         setUp.helper.waitVisibility10seconds(setUp.searchMousePage.getMouseText());
         setUp.searchMousePage.selectAscendingPriceDropDown();

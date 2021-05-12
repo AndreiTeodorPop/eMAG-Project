@@ -1,16 +1,19 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 /**
  * Created by diana on 20 Apr 2021
  */
 
-public class SearchTastaturaPage {
+public class SearchTastaturaPage extends LoadableComponent<SearchTastaturaPage> {
 
     WebDriver driver;
+    String baseURL = "https://www.emag.ro/search/tastatura?ref=effective_search";
 
     private String FirstProductText;
     private String SecondProductText;
@@ -86,5 +89,15 @@ public class SearchTastaturaPage {
     public BasketPage goToBasketPage() {
         cartButton.click();
         return new BasketPage(driver);
+    }
+
+    @Override
+    public void load() {
+        this.driver.get(baseURL);
+    }
+
+    @Override
+    public void isLoaded() throws Error {
+        Assert.assertTrue("HomePage is not loaded!", driver.getCurrentUrl().contains(baseURL));
     }
 }
