@@ -27,7 +27,7 @@ public class ImplementationSearch {
     public void userNavigatesToHomePageAndQuitTheBrowser() {
         setUp.logger.resetConfiguration();
         setUp.basketPage.navigateToHomePage();
-//        setUp.driver.quit();
+        setUp.driver.quit();
     }
 
     @Then("^The shopping cart must be empty$")

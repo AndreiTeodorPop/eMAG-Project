@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"\\src\\test\\java\\resurces"}, glue = {"implementationSteps"})
+@CucumberOptions(features = {"src/test/java/resurces"}, glue = {"implementationSteps"})
 
 public class TestRunner {
 

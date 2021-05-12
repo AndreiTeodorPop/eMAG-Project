@@ -18,6 +18,6 @@ public class Hooks {
     @After
     public void afterScenario(){
         System.out.println("This will run after the Scenario");
-        setUp.driver.quit();
+//        setUp.driver.quit();
     }
 }

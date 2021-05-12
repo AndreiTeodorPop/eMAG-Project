@@ -32,7 +32,7 @@ public class SetUp {
     public SetUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         this.driver = new ChromeDriver();
-        this.driver.get("https://www.emag.ro/homepage");
+        this.driver.get("https://www.emag.ro/");
         this.driver.manage().window().maximize();
         this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         this.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
