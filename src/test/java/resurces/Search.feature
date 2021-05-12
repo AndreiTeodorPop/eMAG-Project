@@ -41,9 +41,9 @@ Feature: User searches for a different types of products on eMAG website
     |casti|
     |Iphone 12 neverlock|
 
-  Scenario: User searches a product from Televizoare Resigilate
+  Scenario Outline: User searches a product from Televizoare Resigilate
     Given User opens eMAG home page
-    When User writes in the search field the product name and presses on cauta button
+    When User writes in the search field the <product> name and presses on cauta button
     Then All products from televizoare are displayed
     And User filters from disponibilitate products which are resigilate
     When Navigate on diagonala display of the first product
@@ -51,15 +51,25 @@ Feature: User searches for a different types of products on eMAG website
     Then Check if the product is in the shopping basket
     Then Delete the product from shopping basket
     And User navigates to home page and quit the browser
+    Examples:
+      |product|
+    |televizoare|
+    |iphone 12 promax|
 
-  Scenario: Adding the first 3 products in the cart depending on their ascending price
+
+  Scenario Outline: Adding the first 3 products in the cart depending on their ascending price
     Given User opens eMAG home page
-    And  User types in the search bar mouse
+    And  User types in the search bar <product>
     And User sorts a list of products in ascending order
     When User adds the first three products to the cart
     Then The three products should be in my shopping cart
     When User delete the products from the cart
     Then The shopping cart must be empty
     And User navigates to home page and quit the browser
+    Examples:
+    |product|
+    |mouse|
+    |iphone 12 promax|
+
 
 

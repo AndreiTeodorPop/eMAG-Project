@@ -117,10 +117,10 @@ public class ImplementationSearch {
 
  //   Scenario nr. 3
 
-    @When("User writes in the search field the product name and presses on cauta button")
-    public void userWritesInTheSearchFieldTheProductNameAndPressesOnCautaButton() {
+    @When("^User writes in the search field the (.*) name and presses on cauta button$")
+    public void userWritesInTheSearchFieldTheProductNameAndPressesOnCautaButton(String product) {
         setUp.logger.logger.info("Now running scenario nr.3");
-        setUp.homePage.writeOnSearchBox(setUp.constants.getTelevizoareTextForSearch());
+        setUp.homePage.writeOnSearchBox(product);
         setUp.searchTelevizoarePage = setUp.homePage.goToSearchTelevizoarePage();
     }
 
@@ -161,17 +161,17 @@ public class ImplementationSearch {
 
     //scenario nr. 4
 
-    @And("User types in the search bar mouse")
-    public void userTypesInTheSearchBarMouse() {
+    @And("^User types in the search bar (.*)$")
+    public void userTypesInTheSearchBarMouse(String product) {
         setUp.logger.logger.info("Now running scenario nr.4");
-        setUp.homePage.writeOnSearchBox(setUp.constants.getMouseTextForSearch());
+        setUp.homePage.writeOnSearchBox(product);
         setUp.searchMousePage = setUp.homePage.goToSearchMousePage();
     }
 
     @And("User sorts a list of products in ascending order")
     public void userSortsAListOfProductsInAscendingOrder() {
-        setUp.searchMousePage.load();
-        setUp.searchMousePage.isLoaded();
+//        setUp.searchMousePage.load();
+//        setUp.searchMousePage.isLoaded();
         setUp.searchMousePage.selectMouseProducts();
         setUp.helper.waitVisibility10seconds(setUp.searchMousePage.getMouseText());
         setUp.searchMousePage.selectAscendingPriceDropDown();
