@@ -10,9 +10,9 @@ Feature: User searches for a different types of products on eMAG website
     Examples:
       |product|
       |iphone 12 pro|
-      |bicicleta|
-      |snowboard|
-      |airmax|
+#      |bicicleta|
+#      |snowboard|
+#      |airmax|
 
   Scenario Outline: User is on Home Page and searches for a list of products
     Given User opens eMAG home page

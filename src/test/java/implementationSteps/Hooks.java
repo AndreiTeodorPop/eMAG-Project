@@ -9,17 +9,18 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
-    WebDriver driver;
+//    WebDriver driver;
 
-    SetUp setUp;
+//    SetUp setUp = new SetUp();
 
-    @Before
-    public void beforeScenario(){
-        System.out.println("This will run before the Scenario");
-    }
-
-    @After
-    public void afterScenario(){
-        System.out.println("This will run after the Scenario");
-    }
+//    @Before
+//    public void beforeScenario(){
+//        System.out.println("This will run before the Scenario");
+//    }
+//
+//    @After
+//    public void afterScenario(){
+//        System.out.println("This will run after the Scenario");
+//        setUp.driver.quit();
+//    }
 }

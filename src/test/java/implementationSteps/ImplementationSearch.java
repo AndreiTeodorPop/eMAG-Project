@@ -1,5 +1,7 @@
 package implementationSteps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +14,19 @@ public class ImplementationSearch {
 
     WebDriver driver;
     SetUp setUp = new SetUp();
+
+    //Before and After
+
+    @Before
+    public void beforeScenario(){
+        System.out.println("This will run before the Scenario");
+    }
+
+    @After
+    public void afterScenario(){
+        System.out.println("This will run after the Scenario");
+        setUp.driver.quit();
+    }
 
     //Commnon methods
 
@@ -28,7 +43,7 @@ public class ImplementationSearch {
     public void userNavigatesToHomePageAndQuitTheBrowser() {
         setUp.logger.resetConfiguration();
         setUp.basketPage.navigateToHomePage();
-        setUp.driver.quit();
+//        setUp.driver.quit();
     }
 
     @Then("^The shopping cart must be empty$")
