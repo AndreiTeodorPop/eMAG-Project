@@ -37,7 +37,9 @@ public class ImplementationSearch {
 //        setUp.driver.quit();
 //    }
 
-    //Commnon methods
+    //Before and After
+
+
 
 //    @Given("^User opens eMAG home page$")
 //    public void userOpensEmagHomePage(){
@@ -53,6 +55,22 @@ public class ImplementationSearch {
 //        setUp.basketPage.navigateToHomePage();
 ////        setUp.driver.quit();
 //    }
+
+//    @Given("^User opens eMAG home page$")
+//    public void userOpensEmagHomePage(){
+//        //setUp.mySetUp();
+//        setUp.logger.configure();
+//        setUp.homePage.validationHomePage();
+//        setUp.homePage.isLoaded();
+////        driver.findElement(By.id("searchboxTrigger")).sendKeys("tastatura");
+//    }
+//
+//    @And("^User navigates to home page and quit the browser$")
+//    public void userNavigatesToHomePageAndQuitTheBrowser() {
+//        setUp.logger.resetConfiguration();
+//        setUp.basketPage.navigateToHomePage();
+////        setUp.driver.quit();
+    //}
 
     @Then("^The shopping cart must be empty$")
     public void theShoppingCartMustBeEmpty() {
