@@ -83,15 +83,7 @@ public class SearchMousePage extends LoadableComponent<SearchMousePage> {
         return product3Text.getText();
     }
 
-    //@Override
-//    public void isLoaded() throws Error
-//    {
-//        System.out.println("Calling isLoaded()...");
-//        String url = driver.getCurrentUrl();
-//        Assert.assertTrue(url.endsWith("account/signIn"));
-//        WebElement h1 = driver.findElement(By.xpath("//span[@data-label='SIGN_IN']"));
-//        Assert.assertTrue(h1.getText().equals("THIS SHOULD REALLY FAIL"));
-//    }
+
 
     public SearchMousePage selectMouseProducts() {
         mouseProducts.click();

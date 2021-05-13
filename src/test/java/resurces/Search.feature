@@ -53,9 +53,8 @@ Feature: User searches for a different types of products on eMAG website
     And User navigates to home page and quit the browser
     Examples:
       |product|
-    |televizoare|
-    |iphone 12 promax|
-
+      |televizoare|
+      |iphone 12 promax|
 
   Scenario Outline: Adding the first 3 products in the cart depending on their ascending price
     Given User opens eMAG home page
